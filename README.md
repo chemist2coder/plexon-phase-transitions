@@ -37,9 +37,18 @@ plekton-phase-transitions/
 │   └── simulation_4conn.py      # Код для расчета 4-связности (2.5 млн шагов)
 │
 ├── figures/                     # Финальные графики расчета
-│   ├── yukawa_10_percent.png
-│   ├── yukawa_50_percent.png
-│   └── ...
+│   └── 4-conn/
+│       ├── 4-conn_10_percent.png
+│       ├── 4-conn_50_percent.png
+│       └── ...
+│   └── Yukawa/
+│       ├── yukawa_10_percent.png
+│       ├── yukawa_50_percent.png
+│       └── ...
+│   └── Final dots/
+│       ├── yukawa_10_percent.png
+│       ├── yukawa_50_percent.png
+│       └── ...
 ├── gif/                       # Анимация эволюции
 │   ├── yukawa_10_percent.gif
 │   ├── yukawa_50_percent.gif
