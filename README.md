@@ -43,3 +43,24 @@ plekton-phase-transitions/
 │   └── ...
 │
 └── .gitignore                 # Исключения для Git
+```
+## Установка и запуск
+Клонируйте репозиторий:
+```
+bash
+git clone https://github.com/chemist2coder/plekton-network-simulation.git
+cd plekton-network-simulation
+```
+## Создайте окружение:
+```
+bash
+conda env create -f environment.yml
+conda activate gravitation
+```
+## Запустите симуляцию:
+```
+bash
+python src/simulation.py --model yukawa --density 0.1 --sigma 2.0 --steps 5000000
+```
+## Контакты
+Автор: Victor Boyko (GitHub: @chemist2coder, email: jade.cups@gmail.com)
