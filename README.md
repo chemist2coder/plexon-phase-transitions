@@ -22,27 +22,29 @@
 ```text
 plekton-phase-transitions/
 │
-├── README.md                  # Этот файл (краткое описание)
-├── THEORY.md                  # Подробная теория (плексоны, спинодаль, связь с космологией)
-├── environment.yml            # Окружение Conda
-├── requirements.txt           # Точные версии pip-пакетов
-├── LICENSE                    # Лицензия MIT
+├── README.md                    # Этот файл (краткое описание)
+├── THEORY.md                    # Подробная теория (плексоны, спинодаль, связь с космологией)
+├── environment.yml              # Окружение Conda
+├── requirements.txt             # Точные версии pip-пакетов
+├── LICENSE                      # Лицензия MIT
 │
 ├── data/
-│   └── processed/             # Результаты расчетов
-│       ├── deep_dive_4conn_v2.csv
-│       └── deep_dive_yukawa_v2.csv
+│   ├── deep_dive_4conn_v2.csv   # Результат для расчета Юкавы (5 млн шагов)
+│   └── deep_dive_yukawa_v2.csv  # Результат для расчета 4-связности (2.5 млн шагов)
 │
 ├── src/
-│   ├── simulation_yukawa.py   # Код для расчета Юкавы (5 млн шагов)
-│   └── simulation_4conn.py    # Код для расчета 4-связности (2.5 млн шагов)
+│   ├── simulation_yukawa.py     # Код для расчета Юкавы (5 млн шагов)
+│   └── simulation_4conn.py      # Код для расчета 4-связности (2.5 млн шагов)
 │
-├── figures/                   # Финальные картинки для статьи
+├── figures/                     # Финальные графики расчета
 │   ├── yukawa_10_percent.png
 │   ├── yukawa_50_percent.png
 │   └── ...
-│
-└── .gitignore                 # Исключения для Git
+├── gif/                       # Анимация эволюции
+│   ├── yukawa_10_percent.gif
+│   ├── yukawa_50_percent.gif
+│   └── ...
+└── .gitignore                   # Исключения для Git
 ```
 ## Установка и запуск
 Клонируйте репозиторий:
