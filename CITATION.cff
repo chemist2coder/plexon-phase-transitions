@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "Если вы используете этот код или данные, пожалуйста, процитируйте как указано ниже. / If you use this software or data, please cite it as below."
+title: "Plexon Network Model of Phase Transitions and Large-Scale Structure of the Universe"
+type: software
+authors:
+  - family-names: Boyko
+    given-names: Victor
+    # orcid: https://orcid.org/XXXX-XXXX-XXXX-XXXX   # добавьте ORCID при наличии
+version: 1.0.0
+date-released: "2026-11-06"
+repository-code: "https://github.com/chemist2coder/plekton-network-simulation"
+url: "https://github.com/chemist2coder/plekton-network-simulation"
+license: MIT
+keywords:
+  - plexon
+  - spinodal decomposition
+  - binodal decomposition
+  - phase separation
+  - Yukawa potential
+  - large-scale structure of the universe
+  - Monte Carlo
+  - Metropolis algorithm
+references:
+  - type: article
+    title: "A spinodal decomposition model for the large-scale structure of the universe"
+    authors:
+      - family-names: Yadav
+        given-names: Nitish
+    journal: "Current Physics"
+    volume: 3
+    year: 2026
+    doi: "10.2174/0127723348461389260423123250"
