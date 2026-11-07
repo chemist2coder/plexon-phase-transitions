@@ -41,7 +41,16 @@ The system minimises its free energy. In the model the energy (action) is
 
 and in the Yukawa-field variant
 
-**S = −Σᵢ Σⱼ J0·(e^(−μ rᵢⱼ)/rᵢⱼ)·Nᵢ·Nⱼ + σ·Perimeter**.
+**S = −(1/2)·J0 · Σᵢ Σ_{j≠i} (e^(−μ rᵢⱼ) / rᵢⱼ) · Nᵢ Nⱼ + σ · Perimeter**.
+
+**Operator legend:**
+- **Σ N²** — the sum over all clusters of the squared number of nodes N in the cluster (the minus sign: aggregation is favourable).
+- **Σᵢ Σ_{j≠i}** — the double sum over all pairs of **distinct** nodes (j ≠ i): a node does not interact with itself (at j = i the distance r = 0 and the 1/r force diverges).
+- **Nᵢ, Nⱼ** — the occupancy of a node: 1 = plexon (occupied), 0 = empty; the term is non-zero only for occupied nodes.
+- **rᵢⱼ** — the distance between nodes i and j (in lattice cells).
+- **e^(−μ rᵢⱼ) / rᵢⱼ** — the Yukawa potential: 1/r is the long-range part, e^(−μr) the screening.
+- **J0** — the attraction strength (amplitude); **μ** — the screening parameter; **σ** — the surface tension; **Perimeter** — the total length of the matter/void boundary.
+- **½** — the factor removing the double counting of each pair (i,j) and (j,i) in the full sum. It is not needed in the code: the energy is computed locally (per occupied node), so each pair is counted once.
 
 **Notation glossary** (what is what):
 
@@ -315,11 +324,11 @@ Gravity is **not a fundamental force but the elasticity of the network**. A dens
 
 A plexon carries a **sign q = ±1** that flips upon aggregation: a single plexon is "+", an aggregate is "−". The interaction:
 
-**F = −G · q₁ q₂ · N₁ N₂ / r²**
+**F = −G · q₁ q₂ · N₁ N₂ / r²** — *where q is the plexon sign (±1), N the number of plexons in an aggregate, r the distance, G a coupling constant.*
 
 Consequences of a single postulate:
 
-- **Dark energy.** The rarefied background of single ("+") plexons repels aggregates ("−"). A uniform background of far plexons produces a constant potential Φ ≈ 4πρ₀/μ² — an effective cosmological constant. Accelerated expansion = the background "solvent" pushing matter apart.
+- **Dark energy.** The rarefied background of single ("+") plexons repels aggregates ("−"). A uniform background of far plexons produces a constant potential Φ ≈ 4πρ₀/μ² *(ρ₀ — the density of far plexons)* — an effective cosmological constant. Accelerated expansion = the background "solvent" pushing matter apart.
 - **Dark matter.** Because the sign flips on aggregation, the attraction between aggregates grows **superlinearly** with N → galaxy rotation curves without a separate dark-matter particle.
 
 In the standard picture DM and DE are different entities; here they are **one entity — the far plexons** — seen from two sides: near aggregates attract, the distant background repels.
@@ -328,11 +337,11 @@ In the standard picture DM and DE are different entities; here they are **one en
 
 A single plexon acts over a short range, a large aggregate farther. We encode this as a size-dependent screening length:
 
-**μ²(N) = μ₀² / N^α**
+**μ²(N) = μ₀² / N^α** — *where N is the aggregate size; μ the inverse screening length; μ₀, α model parameters.*
 
 The effective range grows with N (a black hole "feels" everything; a single plexon only its neighbours). The emergent pair potential is the screened (Yukawa) form:
 
-**G(r) = (1/4πr) · e^(−μr)**,
+**G(r) = (1/4πr) · e^(−μr)** — *the Green's function (the contribution of one plexon to the potential),*
 
 which is exactly what the numerical part uses (§4). Hence a hierarchy of scales — plexons → quarks → protons → atoms → stars — as stable forms of one network; each level is an aggregate of the previous one (fractality, one set of rules).
 
@@ -344,7 +353,7 @@ The observable Universe lies in the **thickness of the wall of an expanding "bub
 
 To make the hypothesis computable, it was cast in the language of Causal Dynamical Triangulation (CDT), with an aggregation term and a surface term:
 
-**S = −κ₂N₂ + κ₄N₄ + Δ(…) − λ Σ N² + σ Σ A_boundary**
+**S = −κ₂N₂ + κ₄N₄ + Δ(…) − λ Σ N² + σ Σ A_boundary** — *where κ₂, κ₄, Δ are the CDT constants; N₂, N₄ the simplex numbers; N the number of plexons in a cluster; A_boundary the boundary area.*
 
 The aggregation term −λ Σ N² (the minus: aggregation is favourable) is the driver; the surface term +σ Σ A (tension) penalises ragged boundaries and forces compact globules. Gravity here is **emergent** — a consequence of a phase transition in the plexon network, not a fundamental force.
 
