@@ -305,4 +305,3 @@ dependencies:
       - torch==2.15.0+cu132
       - torchaudio==2.11.1+cu132
       - torchvision==0.29.2+cu132
-prefix: C:\Users\terra\miniforge3\envs\gravitation
