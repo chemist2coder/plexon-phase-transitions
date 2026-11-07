@@ -1,7 +1,6 @@
-# Theoretical Foundation of the Project (THEORY)
+# Theoretical Foundation of the Plexon Network Model of Phase Transitions and Large-Scale Structure of the Universe
 
-**Plexon Network Model of Phase Transitions and Large-Scale Structure of the Universe**
-Full document: theory, notation glossary, methodology, results, comparison with Yadav (2026).
+*Theory, notation glossary, methodology, results, comparison with Yadav (2026).*
 
 *English translation of the main Russian document `THEORY.md`.*
 
@@ -17,15 +16,19 @@ Thus, where Yadav models the *consequence* (a fluid separates into phases), we m
 
 > **Status of the model.** This is a *toy model*, but a deliberate first, partial test of the hypothesis in 2D (with a planned 3D extension): it shows that the plexon aggregation mechanism actually produces the expected structures — binodal droplets and a spinodal network — i.e. it is *consistent* with the hypothesis. The 2D lattice, however, models only the aggregation step and does not simulate spacetime directly; strengthening the case requires the 3D generalisation and comparison with astrophysical data. What is and is not tested — §5, §11–§12.
 
-> **Status of the work.** This is a first, preliminary examination of the hypothesis, written by an author whose background is chemistry (polymer physical chemistry) rather than professional cosmology. This is not a weakness but a vantage point: polymer physics is the native language of binodal/spinodal decomposition — the toolkit used throughout — and the Cahn–Hilliard framework itself comes from chemical physics (J. W. Cahn was a metallurgist; J. E. Hilliard a chemical engineer). The work deliberately restricts its claims to what the 2D model demonstrates and marks every untested part of the hypothesis explicitly; its aim is to open a discussion, not to announce a finished theory.
+> **Status of the work.** This is a first, preliminary examination of the hypothesis, written by an author whose background is a **polymer chemist** rather than professional cosmology. This is not a weakness but a chance to look at the problem of cosmology from another angle — the angle of polymer physics: phase separation arising in polymer-analogous transformations and the closely related binodal/spinodal decomposition; this toolkit is central here (the Cahn–Hilliard framework itself comes from chemical physics — J. W. Cahn was a metallurgist; J. E. Hilliard a chemical engineer). The work deliberately restricts its claims to what the 2D model demonstrates and marks every untested part of the hypothesis explicitly; its aim is to open a discussion, not to announce a finished theory, and to try oneself in Python code.
 
 ## 2. What is a plexon and where does matter come from
 
-**A plexon is not a particle flying through a void. It is a node of a network.** A plexon is a fundamental entity: not a particle, not a wave, not a point in space. The network constitutes spacetime itself; a plexon is not "in" spacetime — it *makes* it.
+**A plexon is not a particle flying through a void. It is a node of a network.** A plexon is a fundamental entity: not a particle, not a wave, not a point in space. The network constitutes spacetime itself; a plexon is not "in" spacetime — it *makes* it. No node — no network.
 
-A simple analogy — a fishing net: the knots are the plexons, the cells are space. Stretch the net and the cells grow; compress it and they shrink; the knots remain knots.
+A simple analogy — a fishing net: the knots are the plexons, the threads are the links, the cells are voids (space). Stretch the net and the cells grow; compress it and they shrink; the knots remain knots and the threads remain threads. As a first approximation we consider the network in 2D (a net "laid on a table") and ignore both the three-dimensionality of the network itself and the 3D volume in which it is embedded.
 
-**About the term.** We use "plexon" (from Latin *plexus*, "plait/weave") in a **new, specific sense** — "a node of the network that constitutes spacetime"; in physics and cosmology the word is unclaimed in this meaning. Importantly, the word itself is **not unique**: it exists outside physics (the company **Plexon Inc.** — neuroscience instruments, a registered trademark; the Plexon AI service; an anatomical term in some zoological ontologies), so our term is not a new *word* but a new *physical meaning*. We originally used "chronon", but it is overloaded in the literature (Lévi's 1927 quantum of time; the khronon of Hořava gravity; chronon field theory), so a fresh term was adopted; the theory is called the **plexon network theory of gravity (ПСТ)**.
+**Gravity as the tension of the network (an analogue of elastic forces).** From the very beginning we treat gravity **not as a fundamental force between masses but as the tension of the plexon network** — by analogy with the elastic forces in a stretched net. A clump of N nodes (an aggregate) locally pulls and strains the neighbouring links; the network relieves this stress by drawing the neighbouring nodes toward the clump — like a stretched thread pulling back. The more nodes are gathered in the clump (the larger the mass), the stronger the local tension and the stronger the pull: the attraction turns out to be proportional to the mass, with no "mystical action at a distance". Both bodies experience an equal and opposite tension (F = −F), but the body with fewer nodes (less inertia) accelerates more — this is the falling asymmetry. **An important caveat:** our network is **labile** — links break and re-form, nodes aggregate, the topology changes. "Elasticity" here is therefore a metaphor of tension, not the classical theory of elasticity with fixed (Hookean) springs: a fixed lattice yields only linear elasticity, not gravity. The nonlinearity required for gravity arises from aggregation and percolation, not from Hooke's law.
+
+**About the term.** We introduce and use the term "plexon" (from Latin *plexus*, "plait/weave") in a **new, specific sense** — "a node of the network that constitutes spacetime"; in physics and cosmology the word is unclaimed in this meaning.
+
+> Importantly, the word itself is **not unique**: it exists outside physics (the company **Plexon Inc.** — neuroscience instruments, a registered trademark; the Plexon AI service; an anatomical term in some zoological ontologies), so our term is not a new *word* but a new *physical meaning*. We originally used "chronon", but it is overloaded in the literature (Lévi's 1927 quantum of time; the khronon of Hořava gravity; chronon field theory), so a fresh term was adopted; the theory is called the **plexon network theory of gravity (ПСТ)**.
 
 **Aggregation and mass.** A plexon has a "weight" — a measure of presence. A single plexon has weight 1; an aggregate of N plexons has weight N. **Mass is a collective property of aggregation, not an intrinsic property of a particle**: the mass of an aggregate is proportional to N (M ∝ N). This is the gravitational "charge".
 
@@ -154,6 +157,8 @@ The largest cluster grows by absorbing small ones while the total matter/void bo
 | Densities | {0.005, 0.01, 0.1, 0.5} → 0.5 %, 1 %, 10 %, 50 % |
 | σ (tension) | {0, 0.25, 0.5, 1, 1.5, 2, 2.5, 5, 7.5, 10, 15, 25, 50} |
 
+**Hardware.** The computations were carried out on a desktop computer (custom build): Windows 10 Pro 22H2 (64-bit); CPU AMD FX-6300 (6 cores) @ 3.5 GHz; GPU NVIDIA GeForce GTX 1650 (4 GB); RAM 16 GB.
+
 ### 7.2. Stage 1 — screening
 
 Full matrix: 4 couplings × 4 densities × 13 σ = **208 combinations**, each **20,000 steps** (20,000 × 5 = 100,000 moves). A fast draft run to locate the "interesting" transition points on the P_inf(σ) and perimeter curves. Screening results (fragment, 20k steps; 4-connectivity λ=3.0 vs Yukawa J0=3.0):
@@ -170,7 +175,7 @@ Full matrix: 4 couplings × 4 densities × 13 σ = **208 combinations**, each **
 
 Observations: 4-connectivity collapses at once into one cluster (P_inf ≈ 1); Yukawa at 10 % keeps a low P_inf (many separate droplets — binodal), at 50 % gives a "loose", dynamic gel (spinodal).
 
-> Shown is a fragment (key rows); the **full data for all 208 combinations is in `data/screening/`** (the primary screening files).
+> Shown is a fragment (key rows); the **full data for all 208 combinations is in `data/screening/`** (the file contents and the parameter matrix — in [data/screening/README.md](data/screening/README.md)).
 
 ### 7.3. Stage 2 — deep dive
 
@@ -270,7 +275,7 @@ Full evolution (embedded animations; they play inline on GitHub):
 
 ![Yukawa, 50 %, σ=2.0 (5M)](gif/yukawa_5M_D0.5_S2.0.gif)
 
-All 12 animations — in the [`gif/`](gif/) folder; frame sets for self-stitching — in `gif_new/`.
+All 12 animations — in the [`gif/`](gif/) folder; frame sets for self-stitching — in `gif_assemble/`.
 
 ## 10. Comparison with Yadav (2026)
 
@@ -296,9 +301,15 @@ We read the article [1] and its supplementary code. The comparison:
 
 1. **Yadav has code.** Contrary to an early discussion in the chat, the full Python script is published in the supplementary material (`BMS-CPHS-2025-15-Suppl-MS.pdf`). Our advantage is not "he has no code" but **different physics and a reproducible two-model comparison**.
 2. **Yadav knows about binodal/spinodal** (the phase diagram in his Fig. 1c and a ∂²f/∂c² check in his code), **but does not develop the binodal/spinodal dichotomy as two regimes and does not sweep the density**. He fixes c0 = 0.317 and stays in the spinodal region. **We, in this context, observe both regimes as a function of density for the first time**: 10 % → binodal isolated droplets (galaxies), 50 % → a spinodal bicontinuous network (the web), plus an explicit comparison of hard 4-connectivity with soft Yukawa.
-3. **Positioning:** we provide a microscopic mechanism that produces the same structures Yadav describes macroscopically. **Caveat (a hypothesis requiring derivation):** the claim that the Cahn–Hilliard equation is the coarse-grained limit of our discrete model has **not been formally derived** — until it is, it remains a hypothesis, not a fact. The way forward — §16.
+3. **Positioning:** we provide a microscopic mechanism that produces the same structures Yadav describes macroscopically. **Caveat (a hypothesis requiring derivation):** the claim that the Cahn–Hilliard equation is the coarse-grained limit of our discrete model has **not been formally derived** — until it is, it remains a hypothesis, not a fact. The formal derivation is a separate future task.
 
-**Our main contribution (in short).** We (1) **discovered and reproduced both regimes** — binodal (isolated droplets at 10 %) and spinodal (a bicontinuous network at 50 %) — as a function of density, which is absent in Yadav's work; and (2) showed that our discrete model reproduces the **same qualitative morphology** (droplets/filaments/voids) as Yadav's macroscopic Cahn–Hilliard equation. **Boundary of honesty:** this is a qualitative (morphological) correspondence; the quantitative comparison (void fraction, filamentarity, power spectrum, overlay on DES) has not been performed — that is the next stage (§16.5).
+**Our main contribution (in short).** We (1) **discovered and reproduced both regimes** — binodal (isolated droplets at 10 %) and spinodal (a bicontinuous network at 50 %) — as a function of density, which is absent in Yadav's work; and (2) showed that our discrete model reproduces the **same qualitative morphology** (droplets/filaments/voids) as Yadav's macroscopic Cahn–Hilliard equation. **Boundary of honesty:** this is a qualitative (morphological) correspondence; the quantitative comparison (void fraction, filamentarity, power spectrum, overlay on DES) has not been performed — that is the next stage.
+
+---
+
+## Part III. Justification and reference materials
+
+*Sections 11–14: the full statement of the hypothesis, the honest boundaries of the work, the file inventory, and the references.*
 
 ## 11. The theoretical hypothesis (full statement)
 
@@ -361,103 +372,27 @@ The aggregation term −λ Σ N² (the minus: aggregation is favourable) is the 
 
 ## 12. Limitations and honest boundaries
 
-1. **Statistics.** Each point was run **once (one run, one seed)**; the variance over random initial conditions **has not been estimated**. The multi-seed plan — §16.
+1. **Statistics.** Each point was run **once (one run, one seed)**; the variance over random initial conditions **has not been estimated**.
 2. **We did NOT overlay** our simulations on sky maps (DES/Subaru) and did **not build** correlation functions. The visual morphological similarity (droplets/network) is discussed at the level of a phenomenological comparison with Yadav (2026). A direct overlay is the next stage.
 3. The densities 10 % and 50 % are model values, **not tied** to Planck Ωm = 0.317 (which Yadav uses).
 4. Full equilibrium was not reached (10–15M steps are needed).
-5. GPU (PyTorch/CuPy) **gave no speedup** for this task — the final runs are CPU.
+5. GPU (PyTorch/CuPy) **gave no speedup** for this task — the final runs are CPU. The GPU-variant code is in `experiments/` with an analysis of the causes (the sequential Metropolis loop + the small 100×100 lattice).
 6. The Cahn–Hilliard equation was **not solved** by us (only discussed as the macro-limit).
 7. The final snapshot at 5,000,000 steps was not saved (off-by-one) — the 4,750,000 frame is used (2,250,000 for 4-connectivity).
 
-## 13. History of the model's development (briefly)
-
-- **Before the 7th revision (foundation):** replacing "a particle in space" with a network of nodes; labile bonds; the fishing-net analogy (mass = a clump of knots); the falling asymmetry and time; the "bubble wall" geometry; sign-alternation (the background repels — dark energy, superlinear attraction — dark matter).
-- **The 7th revision (formalisation):** translation into the CDT language; emergent gravity as a consequence of a phase transition; mass from aggregation; the "QR-code" problem (the first simulation produced a labyrinth, not a body); the introduction of surface tension σ.
-- **After the 7th revision (the breakthrough, polymer physics):** the upper bifurcation point = the Big Bang; binodal (particles/droplets) vs spinodal (gel/network); dark matter = the gel skeleton; dark energy = the solvent; the introduction of the Yukawa potential and its correction.
-
-## 14. File and code inventory
+## 13. File and code inventory
 
 **Data:** `4conn_2.5M.csv`, `yukawa_2.5M.csv`, `yukawa_5M.csv`, `summary_2.5M.xlsx` (in `data/`).
 
-**Code:** `simulation_4conn_2.5M.ipynb`, `simulation_yukawa_2.5M.ipynb`, `simulation_yukawa_5M.ipynb` (in `src/`). The correspondence to the original names — in `RENAME_MAP.md`.
+**Code:** `simulation_4conn_2.5M.ipynb`, `simulation_yukawa_2.5M.ipynb`, `simulation_yukawa_5M.ipynb` (in `src/`). GPU variants (PyTorch/CuPy, no speedup) — in `experiments/`. The correspondence to the original names — in `RENAME_MAP.md`.
 
-**Figures:** evolution frames in `figures/` (by point and step, 250k…4.75M); animations in `gif/`; frame sets for self-stitching — in `gif_new/`.
+**Figures:** evolution frames in `figures/` (by point and step, 250k…4.75M); animations in `gif/`; frame sets for self-stitching — in `gif_assemble/`.
 
 **Literature for the analysis:** the Yadav article and his published code (supplementary) — in the source-materials folder (see `RENAME_MAP.md`).
 
-## 15. References
+## 14. References
 
 1. N. Yadav, *A spinodal decomposition model for the large-scale structure of the universe*, Current Physics **3**, e27723348461389 (2026). DOI: [10.2174/0127723348461389260423123250](https://doi.org/10.2174/0127723348461389260423123250).
 2. J. W. Cahn, J. E. Hilliard, *Free energy of a nonuniform system. I. Interfacial free energy*, J. Chem. Phys. **28**, 258 (1958). DOI: [10.1063/1.1744102](https://doi.org/10.1063/1.1744102).
 3. V. Springel et al., *Simulations of the formation, evolution and clustering of galaxies and quasars*, Nature **435**, 629 (2005). DOI: [10.1038/nature03597](https://doi.org/10.1038/nature03597).
 4. J. Schaye et al., *The FLAMINGO project: cosmological hydrodynamical simulations…*, MNRAS **526**, 4978 (2023). DOI: [10.1093/mnras/stad2419](https://doi.org/10.1093/mnras/stad2419).
-
----
-
-## 16. Roadmap (what to do next and how)
-
-### 16.1. Getting the DOI via Zenodo (step by step)
-
-1. Register at [zenodo.org](https://zenodo.org) (or "Log in with GitHub").
-2. In Zenodo: your profile → **GitHub** → connect the GitHub account (authorise).
-3. Toggle your repository ON in the list.
-4. On GitHub: create a **Release** (Releases → Draft a new release → tag `v1.0.0` → Publish).
-5. Zenodo automatically archives the release and assigns a **version DOI** (`10.5281/zenodo.XXXXXXX`) and a **concept DOI** for all versions.
-6. Insert the DOI into `CITATION.cff` (the `doi` field) and into the README (the badge).
-7. Each new release gets its own version DOI; the concept DOI always points to the latest version.
-
-Alternative without the GitHub integration: "New upload" → upload a ZIP of the repository → fill the metadata (author, license, description) → Publish.
-
-**Why this matters:** the DOI fixes the publication date and authorship — that is the protection of the priority of the idea/results (the MIT/CC licenses protect only the code/text).
-
-### 16.2. The arXiv preprint (timing and order)
-
-- **There is no formal deadline.** Priority in science is the earliest public timestamp. Two independent stamps are available: the Zenodo DOI date and the **arXiv submission date** (shown on the abstract page as "Submitted on …").
-- Recommended order: (1) prepare a short note (3–6 pages: model, method, results, comparison with Yadav); (2) make the repository public + create the Zenodo DOI; (3) submit to arXiv **the same day or within a few days**. arXiv moderation takes ~1–3 days; the priority date is the submission date.
-- Categories: `astro-ph.CO` or `cond-mat.stat-mech`. For a first submission in some categories arXiv requires an endorser (endorsement) from an existing author — see arxiv.org/help/endorsement; if no endorser is available, pick a category without this requirement or ask a colleague.
-
-### 16.3. Multi-seed (statistics over several runs)
-
-Each point is currently run once. To add statistics (in the same notebook):
-
-```python
-SEEDS = [1, 2, 3, 4, 5]           # e.g. 5 realisations
-for seed in SEEDS:
-    np.random.seed(seed)
-    # ... the existing run loop ...
-    # save CSV with a seed column: writer.writerow([seed, p, J0, sigma, ...])
-```
-
-The final value = mean ± standard deviation over seeds (e.g. P_inf = 0.483 ± 0.01). One 5M run took ~8–10 h on the FX-6300; 5 seeds ≈ 2 days; one can start with 3 seeds and shorter (2.5M) runs to estimate the spread.
-
-### 16.4. Deriving Cahn–Hilliard from the discrete model (the hypothesis of §10)
-
-Two paths, in the right order:
-
-1. **The quick one (comparison, for the paper):** reproduce the Cahn–Hilliard equation on the same lattice (Yadav's supplementary code is a ready FFT solver; or write one's own in an hour) with parameters comparable to ours (double well f(c)=αc²(1−c)², α=200, κ=10⁻⁴) and place the morphologies side by side: Yukawa vs Cahn–Hilliard. This is a consistency check, not a derivation.
-2. **The real derivation (a separate theoretical work):** coarse-grain the discrete model → a Landau free energy with a double well in the density → a gradient expansion → the Cahn–Hilliard equation with α, κ, and the mobility expressed through J0, μ, σ, β. Until this is done, the paper states "a hypothesis requiring derivation".
-
-### 16.5. Overlay on DES/Subaru and correlation functions (memorandum)
-
-**Where to get the data (all public):**
-- **DES DR2** — NOIRLab Astro Data Lab (datalab.noirlab.edu): public DES DR2 catalogues (queries via the web interface or the Python `datalab` client), no special agreement needed.
-- **HSC Subaru** (Hyper Suprime-Cam S16A) — public release at hsc-release.mtk.nao.ac.jp.
-- **Planck 2018** — lensing maps and the power spectrum: Planck Legacy Archive (pla.esac.esa.int), public FITS.
-
-**Pipeline (step by step):**
-1. Download a galaxy catalogue (RA, Dec, redshift; cut one narrow z-bin, e.g. z ≈ 0.65, as Yadav does).
-2. Pixelate the sky into a density map: `healpy` (pip/conda), nside = 256–512; obtain the fluctuation field δ = ρ/ρ̄ − 1.
-3. Compute the **angular power spectrum C_ℓ** (`healpy.anafast`) or the **two-point correlation function w(θ)** (`TreeCorr` or `corrfunc`).
-4. For our model: the binary 100×100 lattice → the density field → the power spectrum via FFT (exactly as in Yadav's code) or the correlation function.
-5. Comparison: plot both curves together. **The honest difficulty:** our model has no physical length scale — one must explicitly choose the correspondence "1 cell = N Mpc" (e.g. 10–20 Mpc) and report this choice; compare not the absolute amplitudes but the **characteristic scales** (the position of the break/maximum) and the **shape**.
-6. Tools: `astropy`, `healpy`, `TreeCorr`, `numpy`, `matplotlib` — all installable from conda-forge/pip.
-
-**An easy starting option:** do not download catalogues — take a **published** correlation function/spectrum from a DES paper (e.g. the DES Y3 w(θ) or the Planck C_ℓ) and overlay our (normalised) curve on it, citing the source of the curve.
-
-### 16.6. The remaining review items (briefly)
-
-- **Metrics:** the cluster-size distribution n(s) — a histogram of sizes from `scipy.ndimage.label` (already used in the code); the fractal dimension d_f — box counting or R_g(s) growth; the correlation function — FFT (as in §16.5).
-- **Finite-size scaling:** run the same 4 points at L = 50 and L = 200; verify that binodal/spinodal persist.
-- **Density 0.317:** add the point (0.317, σ=2.0) to `POINTS` and run 5M — a direct comparison with Yadav (his c0 = 0.317).
-- **3D:** the same code with a 3D convolution (PyTorch conv3d), L = 50³–100³; the volumetric web.
-- **Publication figures:** axis labels, panels (a,b,c), dpi = 300, one consistent palette.

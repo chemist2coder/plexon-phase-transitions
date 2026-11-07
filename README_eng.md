@@ -12,7 +12,7 @@ Author: Victor Boyko · GitHub: [@chemist2coder](https://github.com/chemist2code
 
 This repository contains a computational model (2D, a 100×100 lattice, the Metropolis algorithm) that investigates how **macroscopic structures** — from isolated droplets (prototype of galaxies) to a contiguous bicontinuous network (prototype of the cosmic web) — emerge from the **microscopic aggregation of discrete elements (plexons)**. The project bridges statistical physics (Monte Carlo), polymer thermodynamics (binodal/spinodal decomposition), and cosmology (formation of large-scale structure).
 
-> **Status of the model.** This is a *toy model*, but a deliberate first, partial test of the hypothesis in 2D (with a planned 3D extension): it shows that the plexon aggregation mechanism actually produces the expected structures (droplets at 10%, a network at 50%), i.e. the result is *consistent* with the hypothesis. The 2D lattice, however, models only the aggregation step and does not simulate spacetime directly; strengthening the case requires the 3D generalisation and comparison with astrophysical data.
+> **Status of the model.** The model we propose can be called a *toy model*; its aim is a **deliberate test of the hypothesis in 2D** (with a subsequent move to 3D). It shows that the plexon aggregation mechanism actually produces the expected structures (droplets at 10%, a network at 50%), i.e. the result is *consistent* with the hypothesis. The 2D model, however, covers **only the aggregation step** — we do not simulate spacetime directly; strengthening the confirmation by calculation requires the move to 3D and a direct comparison with astrophysical data. What is confirmed and what remains a hypothesis — see [THEORY.md](THEORY.md) (§5, §11–§12).
 
 > **Status of the work.** This is a first, preliminary examination of the hypothesis, written by an author whose background is chemistry (polymer physical chemistry) rather than professional cosmology. This is not a weakness but a vantage point: polymer physics is the native language of binodal/spinodal decomposition — the toolkit used throughout — and the Cahn–Hilliard framework itself comes from chemical physics (J. W. Cahn was a metallurgist; J. E. Hilliard a chemical engineer). The work deliberately restricts its claims to what the 2D model demonstrates and marks every untested part of the hypothesis explicitly; its aim is to open a discussion, not to announce a finished theory.
 
@@ -65,9 +65,9 @@ Summary of the deep dive (values at 250k → final step):
 - **4-connectivity** rapidly forms a single percolating cluster (P_inf → 1.0 already by 500,000 steps) and thereafter only slowly smooths its boundary (perimeter falls), **without ever re-topologising** — the system "freezes" into a monolith with angular (lattice) artifacts. It is unsuitable for describing dynamic structure evolution.
 - **Yukawa** exhibits classical polymer thermodynamics: at **10 %** — **binodal decomposition** (isolated smooth droplets, a prototype of galaxies); at **50 %** — **spinodal decomposition** (a bicontinuous network, a prototype of the cosmic web). The system keeps rearranging (**Ostwald ripening**: large droplets/network absorb small ones) up to 5 million steps.
 
-> **Ostwald ripening (briefly).** The process whereby, after phase separation, large droplets/clusters "eat" small ones: a small droplet has higher surface tension (Laplace pressure ∝ 1/r), so matter flows to the large ones. In the data this appears as rising P_inf (0.299→0.483), rising Max_Size (292→472), and falling perimeter (574→218) — the "living evolution" of the structure. Details: THEORY §6.1.
+> **Ostwald ripening (briefly).** The process of large droplets/clusters absorbing smaller formations after phase separation: a small droplet has higher surface tension (Laplace pressure ∝ 1/r), so matter tends to flow over and merge with the larger aggregates. In the data we see this as a continuous rise in P_inf (0.299→0.483), a rise in Max_Size (292→472), and a fall in perimeter (574→218) — the "living evolution" of the structure. Details: THEORY §6.1.
 
-> **Caveat about statistics.** Each point was run **once (a single run)**; the variance across random seeds has not been estimated (planned improvement).
+> **Caveat about statistics.** Each point was run by us **once (a single run)**; the variance across random seeds has not been estimated by us. Statistics (several seeds with averaging) is a planned improvement (see THEORY §12) — of both the Python code and the next stage of testing the hypothesis.
 
 > **Caveat about the "plateau".** Full thermodynamic equilibrium was not reached at 5 million steps: points (10 %, σ=10.0) and (50 %, σ=2.0) saturate (~0.64 and ~0.72), whereas (10 %, σ=2.0) and (50 %, σ=1.5) still grow slowly until the end. The growth resembles a fast initial rise with a slow approach to a plateau (exponential relaxation); confirming saturation requires longer runs (of order 10–15 million steps).
 
@@ -112,6 +112,9 @@ All 12 animations — in the [`gif/`](gif/) folder: 4×4-connectivity (2.5M), 4�
 │   ├── simulation_4conn_2.5M.ipynb
 │   ├── simulation_yukawa_2.5M.ipynb
 │   └── simulation_yukawa_5M.ipynb
+├── experiments/                # GPU variants (PyTorch/CuPy) — no speedup, see README inside
+│   ├── simulation_4conn_CUDA.ipynb
+│   └── simulation_yukawa_GPU.ipynb
 ├── figures/
 │   ├── 4conn_2.5M/              # evolution frames (250k…2.25M)
 │   ├── yukawa_2.5M/             # evolution frames (250k…2.25M)
@@ -126,7 +129,7 @@ All 12 animations — in the [`gif/`](gif/) folder: 4×4-connectivity (2.5M), 4�
 - `data/yukawa_2.5M.csv` — Yukawa deep dive, 2.5M steps (columns: `p_init, J0, sigma, step, density, P_inf, perimeter, max_size`).
 - `data/yukawa_5M.csv` — final Yukawa run, 5M steps.
 - `data/summary_2.5M.xlsx` — 2.5M summary (sheets `deep_dive_4conn_v2`, `deep_dive_yukawa_v2`).
-- `data/screening/` — primary screening files for the 208 points (20,000 steps); the file list is in the README inside the folder.
+- `data/screening/` — primary screening files for the 208 points (20,000 steps); contents and the parameter matrix — in [data/screening/README.md](data/screening/README.md).
 
 **Code:**
 - `src/simulation_4conn_2.5M.ipynb` — 4-connectivity (L=100, λ=3.0, 2.5M steps).
@@ -151,7 +154,7 @@ python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\act
 pip install -r requirements.txt
 ```
 
-Run the notebooks in Jupyter: `jupyter notebook src/simulation_yukawa_5M.ipynb`. The parameters (L=100, J0=3.0, μ=0.5, r_cutoff=4, β=1.0, the points) are set at the top of each notebook.
+Run the scripts (.ipynb) in Jupyter: `jupyter notebook src/simulation_yukawa_5M.ipynb`. The parameters (L=100, J0=3.0, μ=0.5, r_cutoff=4, β=1.0, the points) are set at the top of each script.
 
 ## References
 
@@ -164,8 +167,12 @@ Run the notebooks in Jupyter: `jupyter notebook src/simulation_yukawa_5M.ipynb`.
 
 - **Code** — MIT license (file `LICENSE`).
 - **Text and documentation** (README, THEORY) — CC BY 4.0 (file `LICENSE-text`).
-- How to cite — file `CITATION.cff`. After the Zenodo DOI is obtained it will be added here and to `CITATION.cff` (step-by-step Zenodo instructions — THEORY §16).
+- How to cite — file `CITATION.cff`. After the Zenodo DOI is obtained it will be added here and to `CITATION.cff`.
 
 ---
 
 *Detailed theory, notation glossary, methodology, and the full analysis — in [THEORY_eng.md](THEORY_eng.md) (English) / [THEORY.md](THEORY.md) (Russian). The arXiv preprint — in `arXiv/preprint.md` (English) and `arXiv/preprint_ru.md` (Russian).*
+
+## Testing & QA
+
+Development used AI-assisted coding tools; the scientific content — the hypothesis, the physical model, the choice of parameters and methodology, and the interpretation and verification of the results — is the author's. During shakedown the code was tested for robustness against crashes and interruptions (a checkpoint/resume system); the perimeter bug ("checkerboard"), the Yukawa double-counting, and an off-by-one in saving the final snapshot were fixed; the results were cross-checked against the primary screening. The computations are currently stable and reproducible (data in `data/`).
