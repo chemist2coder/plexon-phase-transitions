@@ -83,7 +83,6 @@
 plekton/
 ├── README.md                    # этот файл (краткое описание и результаты)
 ├── THEORY.md                    # подробная теория (плексоны, Юкава, бинодаль/спинодаль, Ядав, методология)
-├── RENAME_MAP.md                # таблица переименований «старое → новое»
 ├── LICENSE                      # MIT (код)
 ├── LICENSE-text                 # CC BY 4.0 (тексты/документация)
 ├── CITATION.cff                 # машиночитаемое цитирование
@@ -153,8 +152,6 @@ cd plekton
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
-
-Соответствие исходным именам файлов — в `RENAME_MAP.md`.
 
 Запуск скриптов (.ipynb) — в Jupyter: `jupyter notebook src/simulation_yukawa_5M.ipynb`. Параметры (L=100, J0=3.0, μ=0.5, r_cutoff=4, β=1.0, точки) заданы в начале каждого скрипта.
 
