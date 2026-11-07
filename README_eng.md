@@ -96,6 +96,7 @@ All 12 animations — in the [`gif/`](gif/) folder: 4×4-connectivity (2.5M), 4�
 ├── README_eng.md                # this file (English)
 ├── THEORY.md                    # detailed theory (Russian)
 ├── THEORY_eng.md                # detailed theory (English)
+├── RENAME_MAP.md                # file-rename table "old → new"
 ├── LICENSE                      # MIT (code)
 ├── LICENSE-text                 # CC BY 4.0 (text/documentation)
 ├── CITATION.cff                 # machine-readable citation
@@ -134,6 +135,8 @@ All 12 animations — in the [`gif/`](gif/) folder: 4×4-connectivity (2.5M), 4�
 - `src/simulation_4conn_2.5M.ipynb` — 4-connectivity (L=100, λ=3.0, 2.5M steps).
 - `src/simulation_yukawa_2.5M.ipynb` — Yukawa 2.5M (L=100, J0=3.0, μ=0.5, r_cutoff=4).
 - `src/simulation_yukawa_5M.ipynb` — Yukawa 5M (final).
+
+Correspondence to the original file names — in `RENAME_MAP.md`.
 
 ## Installation and run
 
