@@ -360,7 +360,7 @@ which is exactly what the numerical part uses (§4). Hence a hierarchy of scales
 
 The observable Universe lies in the **thickness of the wall of an expanding "bubble"** (not on a surface, not in a void). Redshift is a visibility limit set by the density of the wall, not the edge of the Universe. The early homogeneous wall, saturated with plexons, underwent fluctuations: where the density grew, aggregation began; where it fell, voids opened; at some moment a **percolation transition** occurred — the homogeneous "film" separated into clusters and voids. (In the refined formulation: the bubble "did not burst" but underwent a **phase transition** — segregation, like oil and water, without tearing the metric.)
 
-### 11.8. Formalisation (the "7th revision"): CDT and the action
+### 11.8. Formalisation: CDT and the action
 
 To make the hypothesis computable, it was cast in the language of Causal Dynamical Triangulation (CDT), with an aggregation term and a surface term:
 
