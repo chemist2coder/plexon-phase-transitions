@@ -154,6 +154,8 @@ python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\act
 pip install -r requirements.txt
 ```
 
+Соответствие исходным именам файлов — в `RENAME_MAP.md`.
+
 Запуск скриптов (.ipynb) — в Jupyter: `jupyter notebook src/simulation_yukawa_5M.ipynb`. Параметры (L=100, J0=3.0, μ=0.5, r_cutoff=4, β=1.0, точки) заданы в начале каждого скрипта.
 
 ## Литература
