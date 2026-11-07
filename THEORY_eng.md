@@ -28,7 +28,7 @@ A simple analogy — a fishing net: the knots are the plexons, the threads are t
 
 **About the term.** We introduce and use the term "plexon" (from Latin *plexus*, "plait/weave") in a **new, specific sense** — "a node of the network that constitutes spacetime"; in physics and cosmology the word is unclaimed in this meaning.
 
-> Importantly, the word itself is **not unique**: it exists outside physics (the company **Plexon Inc.** — neuroscience instruments, a registered trademark; the Plexon AI service; an anatomical term in some zoological ontologies), so our term is not a new *word* but a new *physical meaning*. We originally used "chronon", but it is overloaded in the literature (Lévi's 1927 quantum of time; the khronon of Hořava gravity; chronon field theory), so a fresh term was adopted; the theory is called the **plexon network theory of gravity (ПСТ)**.
+> Importantly, the word itself is **not unique**: it exists outside physics (for example, the company **Plexon Inc.** — instruments for neuroscience research), so our term is not a new *word* but a new *physical meaning*. We originally used "chronon", but it is overloaded in the literature (Lévi's 1927 quantum of time; the khronon of Hořava gravity; the 2025 Chronon Field Theory, a fringe attempt to derive gravity and gauge interactions from a "temporal field" Φ(x)), so a fresh term was adopted; the theory is called the **plexon network theory of gravity (ПСТ)**.
 
 **Aggregation and mass.** A plexon has a "weight" — a measure of presence. A single plexon has weight 1; an aggregate of N plexons has weight N. **Mass is a collective property of aggregation, not an intrinsic property of a particle**: the mass of an aggregate is proportional to N (M ∝ N). This is the gravitational "charge".
 
@@ -339,7 +339,7 @@ A plexon carries a **sign q = ±1** that flips upon aggregation: a single plexon
 
 Consequences of a single postulate:
 
-- **Dark energy.** The rarefied background of single ("+") plexons repels aggregates ("−"). A uniform background of far plexons produces a constant potential Φ ≈ 4πρ₀/μ² *(ρ₀ — the density of far plexons)* — an effective cosmological constant. Accelerated expansion = the background "solvent" pushing matter apart.
+- **Dark energy.** The rarefied background of single ("+") plexons repels aggregates ("−"). A uniform background of far plexons produces a constant potential Φ ≈ 4πρ₀/μ² *(ρ₀ — the density of far plexons; a 3D estimate: the integral ∫ρ₀·e^(−μr)/r d³r)* — an effective cosmological constant. Accelerated expansion = the background "solvent" pushing matter apart.
 - **Dark matter.** Because the sign flips on aggregation, the attraction between aggregates grows **superlinearly** with N → galaxy rotation curves without a separate dark-matter particle.
 
 In the standard picture DM and DE are different entities; here they are **one entity — the far plexons** — seen from two sides: near aggregates attract, the distant background repels.
@@ -352,19 +352,17 @@ A single plexon acts over a short range, a large aggregate farther. We encode th
 
 The effective range grows with N (a black hole "feels" everything; a single plexon only its neighbours). The emergent pair potential is the screened (Yukawa) form:
 
-**G(r) = (1/4πr) · e^(−μr)** — *the Green's function (the contribution of one plexon to the potential),*
-
-which is exactly what the numerical part uses (§4). Hence a hierarchy of scales — plexons → quarks → protons → atoms → stars — as stable forms of one network; each level is an aggregate of the previous one (fractality, one set of rules).
+**G(r) = (1/4πr) · e^(−μr)** — *the Green's function of the operator (−∇² + μ²) in 3D (the contribution of one plexon to the potential). Caveat: in 2D the Green's function is different — K₀(μr)/(2π); we deliberately take the 3D Yukawa form e^(−μr)/r as the model potential (the hypothesis targets 3D), and this is exactly the form used in the numerical part (§4).* Hence a hierarchy of scales — plexons → quarks → protons → atoms → stars — as stable forms of one network; each level is an aggregate of the previous one (fractality, one set of rules).
 
 ### 11.7. The bubble wall and percolation
 
-The observable Universe lies in the **thickness of the wall of an expanding "bubble"** (not on a surface, not in a void). Redshift is a visibility limit set by the density of the wall, not the edge of the Universe. The early homogeneous wall, saturated with plexons, underwent fluctuations: where the density grew, aggregation began; where it fell, voids opened; at some moment a **percolation transition** occurred — the homogeneous "film" separated into clusters and voids. (In the refined formulation: the bubble "did not burst" but underwent a **phase transition** — segregation, like oil and water, without tearing the metric.)
+The observable Universe lies in the **thickness of the wall of an expanding "bubble"** (not on a surface, not in a void). Redshift is a visibility limit set by the density of the wall, not the edge of the Universe. The early homogeneous wall, saturated with plexons, underwent fluctuations: where the density grew, aggregation began; where it fell, voids opened; at some moment a **percolation transition** occurred — the homogeneous "film" separated into clusters and voids. (In the refined formulation: the bubble "did not burst" but underwent a **phase transition** — segregation, like oil and water, without tearing the metric.) *An honest citation: the very idea of "living inside a domain wall" is not new — it was proposed by V. A. Rubakov and M. E. Shaposhnikov (1983) [5]. What is specific to this work is the percolation phase transition in the thickness of the wall and the derivation of the morphology from discrete aggregation of plexons.*
 
 ### 11.8. Formalisation: CDT and the action
 
 To make the hypothesis computable, it was cast in the language of Causal Dynamical Triangulation (CDT), with an aggregation term and a surface term:
 
-**S = −κ₂N₂ + κ₄N₄ + Δ(…) − λ Σ N² + σ Σ A_boundary** — *where κ₂, κ₄, Δ are the CDT constants; N₂, N₄ the simplex numbers; N the number of plexons in a cluster; A_boundary the boundary area.*
+**S = −κ₂N₂ + κ₄N₄ + Δ(…) − λ Σ N² + σ Σ A_boundary** — *a schematic CDT action (the simplex dimension of the terms depends on the dimension); κ₂, κ₄, Δ are the CDT constants; N₂, N₄ the simplex numbers; N the number of plexons in a cluster; A_boundary the boundary area.*
 
 The aggregation term −λ Σ N² (the minus: aggregation is favourable) is the driver; the surface term +σ Σ A (tension) penalises ragged boundaries and forces compact globules. Gravity here is **emergent** — a consequence of a phase transition in the plexon network, not a fundamental force.
 
@@ -396,3 +394,4 @@ The aggregation term −λ Σ N² (the minus: aggregation is favourable) is the 
 2. J. W. Cahn, J. E. Hilliard, *Free energy of a nonuniform system. I. Interfacial free energy*, J. Chem. Phys. **28**, 258 (1958). DOI: [10.1063/1.1744102](https://doi.org/10.1063/1.1744102).
 3. V. Springel et al., *Simulations of the formation, evolution and clustering of galaxies and quasars*, Nature **435**, 629 (2005). DOI: [10.1038/nature03597](https://doi.org/10.1038/nature03597).
 4. J. Schaye et al., *The FLAMINGO project: cosmological hydrodynamical simulations…*, MNRAS **526**, 4978 (2023). DOI: [10.1093/mnras/stad2419](https://doi.org/10.1093/mnras/stad2419).
+5. V. A. Rubakov, M. E. Shaposhnikov, *Do we live inside a domain wall?*, Phys. Lett. B **125**, 136 (1983). DOI: [10.1016/0370-2693(83)91253-4](https://doi.org/10.1016/0370-2693(83)91253-4).
