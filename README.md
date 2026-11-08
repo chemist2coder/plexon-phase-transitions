@@ -166,7 +166,7 @@ Run the scripts (.ipynb) in Jupyter: `jupyter notebook src/simulation_yukawa_5M.
 
 - **Code** — MIT license (file `LICENSE`).
 - **Text and documentation** (README, THEORY) — CC BY 4.0 (file `LICENSE-text`).
-- **Zenodo DOI is obtained it will be added here and to `CITATION.cff`.**
+- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24058535.svg)](https://doi.org/10.5281/zenodo.24058535)
 
 ---
 
