@@ -2,7 +2,7 @@
 
 *Theory, notation glossary, methodology, results, comparison with Yadav (2026).*
 
-*English translation of the main Russian document `THEORY.md`.*
+*Main theory document (English). Russian version — THEORY.ru.md.*
 
 ---
 
