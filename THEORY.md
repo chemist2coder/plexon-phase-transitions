@@ -1,172 +1,169 @@
-# Теоретическая основа плексон-сетевой модели фазовых переходов и крупномасштабной структуры Вселенной
+# Theoretical Foundation of the Plexon Network Model of Phase Transitions and Large-Scale Structure of the Universe
 
-*Теория, словарь обозначений, методология, результаты, сравнение с Yadav (2026).*
+*Theory, notation glossary, methodology, results, comparison with Yadav (2026).*
 
-*Русская версия. Основной документ — на английском: [THEORY.md](THEORY.md).*
+*Main theory document (English). Russian version — [THEORY.ru.md](THEORY.ru.md).*
 
-## 1. Введение: от феноменологии к микроскопии
+---
 
-Современные исследования крупномасштабной структуры Вселенной (КМС) всё чаще используют термодинамические подходы. В работе Nitish Yadav (2026) [1] уравнение Кана–Хилларда — классическая модель спинодального распада полимерных смесей — применяется к «двухкомпонентной жидкости» (материя + тёмная энергия) и воспроизводит войды, стенки и филаменты, согласуясь с обзорами DES и Subaru. Это макроскопический, феноменологический подход: он постулирует жидкость и решает континуальное уравнение, но **не объясняет, из чего эта жидкость состоит**.
+## 1. Introduction: from phenomenology to microscopy
 
-В нашей работе мы предлагаем **микроскопический механизм**. Мы предполагаем, что пространство-время состоит из дискретных узлов — **плексонов**, — а гравитация, масса и крупномасштабная структура возникают из их **агрегации**. Для описания взаимодействия используется **потенциал Юкавы** — мягкое, затухающее с расстоянием поле, которое математически аналогично индуктивному эффекту в полимерных цепях (затухание влияния заместителя через 4–5 связей).
+Modern studies of the large-scale structure (LSS) of the Universe increasingly employ thermodynamic approaches. In the work of Nitish Yadav (2026) [1], the Cahn–Hilliard equation — the classical model of spinodal decomposition of polymer mixtures — is applied to a "two-component fluid" (matter + dark energy) and reproduces voids, walls, and filaments in agreement with the DES and Subaru surveys. This is a macroscopic, phenomenological approach: it postulates a fluid and solves a continuum equation, but does **not explain what the fluid is made of**.
 
-Таким образом, если Yadav моделирует *следствие* (жидкость разделяется на фазы), то мы моделируем *причину* (дискретные элементы агрегируются, порождая те же фазы).
+In this work we propose a **microscopic mechanism**. We hypothesise that spacetime consists of discrete nodes — **plexons** — and that gravity, mass, and large-scale structure arise from their **aggregation**. The interaction is described by the **Yukawa potential** — a soft field decaying with distance, mathematically analogous to the inductive effect in polymer chains (a substituent's influence fading over 4–5 bonds).
 
-> **Статус модели.** Настоящая работа — **игрушечная (toy) модель**, но она задумана как **первая, частичная проверка гипотезы в 2D** (с последующим переходом к 3D): она показывает, что механизм агрегации плексонов действительно порождает ожидаемые структуры — капли (бинодаль) и сетку (спинодаль) — то есть результат **согласуется с гипотезой**. Однако модель проверяет **только агрегацию** и не симулирует пространство-время напрямую; подтвердить, что плексоны — реальные узлы пространства-времени, может лишь 3D-обобщение и сравнение с астрофизическими данными. Что подтверждено расчётом, а что остаётся гипотезой — §5 и §11–§12.
+Thus, where Yadav models the *consequence* (a fluid separates into phases), we model the *cause* (discrete elements aggregate, producing the same phases).
 
-> **О статусе работы.** Это первичное (предварительное) рассмотрение гипотезы, выполненное автором — **химиком-полимерщиком**, а не профессиональным космологом. Это возможность взглянуть на проблему космологии с другого ракурса — ракурса физики полимеров: фазовое разделение, возникающее при полимер-аналогичных превращениях, и тесно связанные с ним бинодальный/спинодальный распад; именно этот инструментарий здесь основной (само уравнение Кана–Хилларда вышло из химической физики — Дж. Кан был металлургом, Дж. Хиллиард — химиком-технологом). Работа сознательно ограничивает утверждения тем, что показывает 2D-модель, и явно помечает все недоказанные части гипотезы; цель работы — открыть обсуждение, а не объявить готовую теорию, и попробовать себя в коде Python.
+> **Status of the model.** This is a *toy model*, but a deliberate first, partial test of the hypothesis in 2D (with a planned 3D extension): it shows that the plexon aggregation mechanism actually produces the expected structures — binodal droplets and a spinodal network — i.e. it is *consistent* with the hypothesis. The 2D lattice, however, models only the aggregation step and does not simulate spacetime directly; strengthening the case requires the 3D generalisation and comparison with astrophysical data. What is and is not tested — §5, §11–§12.
 
-## 2. Что такое плексон и откуда берётся материя
+> **Status of the work.** This is a first, preliminary examination of the hypothesis, written by an author with background in **polymer chemistry** not a professional cosmology. This is not a weakness but a chance to look at the problem of cosmology from another angle — the angle of polymer physics: phase separation arising in polymer-analogous transformations and the closely related binodal/spinodal decomposition; this toolkit is central here (the Cahn–Hilliard framework itself comes from chemical physics — J. W. Cahn was a metallurgist; J. E. Hilliard a chemical engineer). The work deliberately restricts its claims to what the 2D model demonstrates and marks every untested part of the hypothesis explicitly; its aim is to open a discussion, not to announce a finished theory, and to try oneself in Python code.
 
-**Плексон — это не частица, летящая в пустоте. Это узел сети.** Плексон — фундаментальная сущность: не частица, не волна, не точка в пространстве. Сеть образует само пространство-время; плексон не «находится в» пространстве-времени, а **создаёт** его. Если нет узла — нет сети.
+## 2. What is a plexon and where does matter come from
 
-Простая аналогия — рыболовная сеть: узлы — плексоны, нити — связи, ячейки — войды (пространство). Если сеть растянуть — ячейки увеличатся; если сжать — уменьшатся; но узлы остаются узлами, а нити — нитями. В первичном приближении мы рассматриваем сеть на плоскости 2D («сеть, положенная на стол») и не учитываем ни трёхмерность самой сети, ни 3D-объём, в котором она размещена.
+**A plexon is not a particle flying through a void. It is a node of a network.** A plexon is a fundamental entity: not a particle, not a wave, not a point in space. The network constitutes spacetime itself; a plexon is not "in" spacetime — it *makes* it. No node — no network.
 
-**Гравитация как натяжение сети (аналог упругих сил).** С самого начала мы рассматриваем гравитацию **не как фундаментальную силу между массами, а как натяжение сети плексонов** — по аналогии с упругими силами в растянутой сети. Комок из N узлов (агрегат) локально оттягивает и напрягает соседние связи; сеть стремится снять это напряжение и стягивает соседние узлы к комку — как растянутая нить тянет обратно. Чем больше узлов в комке (чем больше масса), тем сильнее локальное натяжение и тем сильнее стягивание: притяжение оказывается пропорциональным массе, без «мистического дальнодействия». Оба тела испытывают равное и противоположное натяжение (F = −F), но тело с меньшим числом узлов (меньшей инерцией) ускоряется сильнее — это и есть асимметрия падения. **Важная оговорка:** наша сеть **лабильна** — связи рвутся и перестраиваются, узлы агрегируют, топология меняется. Поэтому «упругость» здесь — метафора натяжения, а не классическая теория упругости с фиксированными пружинами (закон Гука): фиксированная решётка даёт лишь линейную упругость, а не гравитацию. Нелинейность, нужная для гравитации, возникает из агрегации и перколяции, а не из закона Гука.
+A simple analogy — a fishing net: the knots are the plexons, the threads are the links, the cells are voids (space). Stretch the net and the cells grow; compress it and they shrink; the knots remain knots and the threads remain threads. As a first approximation we consider the network in 2D (a net "laid on a table") and ignore both the three-dimensionality of the network itself and the 3D volume in which it is embedded.
 
-**О термине.** Мы вводим и используем термин «плексон» (от латинского *plexus* — «сплетение») в **новом, собственном смысле** — «узел сети, образующей пространство-время»; в физике и космологии в этом значении слово не занято.
+**Gravity as the tension of the network (an analogue of elastic forces).** From the very beginning we treat gravity **not as a fundamental force between masses but as the tension of the plexon network** — by analogy with the elastic forces in a stretched net. A clump of N nodes (an aggregate) locally pulls and strains the neighbouring links; the network relieves this stress by drawing the neighbouring nodes toward the clump — like a stretched thread pulling back. The more nodes are gathered in the clump (the larger the mass), the stronger the local tension and the stronger the pull: the attraction turns out to be proportional to the mass, with no "mystical action at a distance". Both bodies experience an equal and opposite tension (F = −F), but the body with fewer nodes (less inertia) accelerates more — this is the falling asymmetry. **An important caveat:** our network is **labile** — links break and re-form, nodes aggregate, the topology changes. "Elasticity" here is therefore a metaphor of tension, not the classical theory of elasticity with fixed (Hookean) springs: a fixed lattice yields only linear elasticity, not gravity. The nonlinearity required for gravity arises from aggregation and percolation, not from Hooke's law.
 
-> Важно: само слово «plexon» **не уникально** — оно существует вне физики (например, компания **Plexon Inc.** — оборудование для нейрофизиологических исследований), поэтому наш термин — не новое слово, а **новое физическое значение**. Изначально мы использовали термин «хронон», однако он перегружен в литературе и означает совсем другое:
->- *хронон* (Леви, 1927) — гипотетический квант времени;
->- *khronon* в гравитации Хоржавы — скалярное поле, задающее слоение;
->- *Chronon Field Theory* (2025) — маргинальная попытка вывести гравитацию и калибровочные взаимодействия из «темпорального поля» Φ(x).
+**About the term.** We introduce and use the term "plexon" (from Latin *plexus*, "plait/weave") in a **new, specific sense** — "a node of the network that constitutes spacetime"; in physics and cosmology the word is unclaimed in this meaning.
 
-Наш объект — иной: узел сети, образующей пространство-время. Чтобы избежать путаницы, принят новый термин **плексон**; теория называется **плексон-сетевая теория гравитации (ПСТ)**.
+> Importantly, the word itself is **not unique**: it exists outside physics (for example, the company **Plexon Inc.** — instruments for neuroscience research), so our term is not a new *word* but a new *physical meaning*. We originally used "chronon", but it is overloaded in the literature (Lévi's 1927 quantum of time; the khronon of Hořava gravity; the 2025 Chronon Field Theory, a fringe attempt to derive gravity and gauge interactions from a "temporal field" Φ(x)), so a fresh term was adopted; the theory is called the **plexon network theory of gravity (ПСТ)**.
 
-**Агрегация и масса.** У плексона есть «вес» — мера присутствия. Одиночный плексон имеет вес 1; агрегат из N плексонов — вес N. **Масса — это коллективное свойство агрегации, а не изначальное свойство частицы**: масса агрегата пропорциональна N (M ∝ N). Это гравитационный «заряд».
+**Aggregation and mass.** A plexon has a "weight" — a measure of presence. A single plexon has weight 1; an aggregate of N plexons has weight N. **Mass is a collective property of aggregation, not an intrinsic property of a particle**: the mass of an aggregate is proportional to N (M ∝ N). This is the gravitational "charge".
 
-Масштабы: одиночный плексон N = 1; маленький кластер N ≈ 10; атом N ≈ 10⁶⁰; звезда N ≈ 10¹²⁰; чёрная дыра N → ∞ *(иллюстративная оценка гипотезы, не расчёт — приводится только как образ, в вычислениях не используется)*.
+Scales: a single plexon N = 1; a small cluster N ≈ 10; an atom N ≈ 10⁶⁰; a star N ≈ 10¹²⁰; a black hole N → ∞ *(an illustrative estimate of the hypothesis, not a calculation — given only as an image, not used in the numerics)*.
 
-**Дуализм «поле–тело».** Одиночный плексон или разреженная сеть ведут себя как **поле**; агрегат или плотная сеть — как **тело**. Это не два разных объекта, а два режима одной сети — как вода и лёд.
+**Field–body dualism.** A single plexon, or a rarefied network, behaves as a **field**; an aggregate, or a dense network, as a **body**. Not two different objects, but two regimes of one network — like water and ice.
 
-## 3. Энергия системы и словарь обозначений
+## 3. Energy of the system and the notation glossary
 
-Система стремится минимизировать свободную энергию. В нашей модели энергия (действие) задаётся как
+The system minimises its free energy. In the model the energy (action) is
 
 **S = −λ·Σ N² + σ·Perimeter**,
 
-а в варианте с полем Юкавы — как
+and in the Yukawa-field variant
 
 **S = −(1/2)·J0 · Σᵢ Σ_{j≠i} (e^(−μ rᵢⱼ) / rᵢⱼ) · Nᵢ Nⱼ + σ · Perimeter**.
 
-**Расшифровка операторов:**
-- **Σ N²** — сумма по всем кластерам квадрата числа узлов N в кластере (знак минус: агрегация выгодна).
-- **Σᵢ Σ_{j≠i}** — двойная сумма по всем парам **разных** узлов (j ≠ i): узел не взаимодействует сам с собой (при j = i расстояние r = 0, и сила 1/r расходится).
-- **Nᵢ, Nⱼ** — занятость узла: 1 = плексон (занят), 0 = пусто; слагаемое отлично от нуля только для занятых узлов.
-- **rᵢⱼ** — расстояние между узлами i и j (в ячейках решётки).
-- **e^(−μ rᵢⱼ) / rᵢⱼ** — потенциал Юкавы: 1/r — дальнодействие, e^(−μr) — экранирование.
-- **J0** — сила (амплитуда) притяжения; **μ** — параметр экранирования; **σ** — поверхностное натяжение; **Perimeter** — суммарная длина границы «материя/пустота».
-- **½** — фактор, устраняющий двойной счёт каждой пары (i,j) и (j,i) в полной сумме. В коде он не требуется: энергия считается локально (по одному занятому узлу), поэтому каждая пара учитывается один раз.
+**Operator legend:**
+- **Σ N²** — the sum over all clusters of the squared number of nodes N in the cluster (the minus sign: aggregation is favourable).
+- **Σᵢ Σ_{j≠i}** — the double sum over all pairs of **distinct** nodes (j ≠ i): a node does not interact with itself (at j = i the distance r = 0 and the 1/r force diverges).
+- **Nᵢ, Nⱼ** — the occupancy of a node: 1 = plexon (occupied), 0 = empty; the term is non-zero only for occupied nodes.
+- **rᵢⱼ** — the distance between nodes i and j (in lattice cells).
+- **e^(−μ rᵢⱼ) / rᵢⱼ** — the Yukawa potential: 1/r is the long-range part, e^(−μr) the screening.
+- **J0** — the attraction strength (amplitude); **μ** — the screening parameter; **σ** — the surface tension; **Perimeter** — the total length of the matter/void boundary.
+- **½** — the factor removing the double counting of each pair (i,j) and (j,i) in the full sum. It is not needed in the code: the energy is computed locally (per occupied node), so each pair is counted once.
 
-**Словарь обозначений** (расшифровка, что есть что):
+**Notation glossary** (what is what):
 
-| Обозначение | Название | Смысл в модели | Значение |
+| Symbol | Name | Meaning in the model | Value |
 |---|---|---|---|
-| **λ (лямбда)** | сила агрегации | насколько энергетически выгодно слипание (знак «минус» в −λΣN² означает: агрегация выгодна); λc — порог агрегации | λ = 3.0 (в 4-связности) |
-| **σ (сигма)** | поверхностное натяжение | штраф за рваные границы (член +σ·Perimeter); «плохой растворитель», сжимающий клубок в глобулу | список 0…50 (см. §7) |
-| **β (бета)** | обратная температура | тепловой шум (1/kT); шаг принимается при ΔS ≤ 0 или с вероятностью exp(−β·ΔS) | β = 1.0 |
-| **J0** | сила притяжения ы | амплитуда потенциала; «насколько плексоны любят друг друга»; усилен, «чтобы притяжение победило энтропию» | J0 = 3.0 |
-| **μ (мю)** | параметр экранирования ы | обратная длина экранирования («масса поля»); чем больше μ, тем быстрее затухает сила | μ = 0.5 |
-| **r_cutoff** | радиус обрезания | считаем взаимодействие только в радиусе 4 клеток («тот самый 5-й атом»); на 4-й клетке сила ≈ e⁻² ≈ 0.13 | r_cutoff = 4 |
-| **P_inf** | доля в гигантском кластере | размер наибольшего кластера / общее число частиц; 0 — всё рассеяно, 1 — монолит | см. таблицы |
-| **Perimeter** | периметр (граница) | сумма рёбер, где занятая клетка касается пустой; чем ниже, тем компактнее структура | см. таблицы |
-| **Max_Size** | размер наибольшего кластера | абсолютное число частиц в крупнейшем кластере (читать вместе с P_inf) | см. таблицы |
-| **density** | фактическая плотность | измеренная доля занятых узлов (должна совпадать с заданной) | 0.5 %, 1 %, 10 %, 50 % |
+| **λ (lambda)** | aggregation strength | how energetically favourable sticking is (the minus sign in −λΣN² means aggregation is favourable); λc — the aggregation threshold | λ = 3.0 (in 4-connectivity) |
+| **σ (sigma)** | surface tension | the penalty for ragged boundaries (the +σ·Perimeter term); a "poor solvent" squeezing a coil into a globule | list 0…50 (see §7) |
+| **β (beta)** | inverse temperature | thermal noise (1/kT); a move is accepted if ΔS ≤ 0 or with probability exp(−β·ΔS) | β = 1.0 |
+| **J0** | Yukawa attraction strength | the amplitude of the potential; "how much plexons like each other"; raised "so that attraction beats entropy" | J0 = 3.0 |
+| **μ (mu)** | Yukawa screening parameter | the inverse screening length ("field mass"); the larger μ, the faster the force decays | μ = 0.5 |
+| **r_cutoff** | cutoff radius | interactions are counted only within 4 cells ("that same 5th atom"); at the 4th cell the force is ≈ e⁻² ≈ 0.13 | r_cutoff = 4 |
+| **P_inf** | giant-cluster fraction | size of the largest cluster / total particle number; 0 — all dispersed, 1 — a monolith | see tables |
+| **Perimeter** | perimeter (boundary) | total number of edges where an occupied cell touches an empty one; the lower, the more compact | see tables |
+| **Max_Size** | largest-cluster size | the absolute number of particles in the largest cluster (read together with P_inf) | see tables |
+| **density** | actual density | the measured fraction of occupied nodes (should match the set value) | 0.5 %, 1 %, 10 %, 50 % |
 
-**Алгоритм.** Метрополис (Монте-Карло) с обменом занятого и пустого узла — общее число частиц (плотность) сохраняется. Шаг принимается, если ΔS ≤ 0, иначе — с вероятностью exp(−β·ΔS).
+**Algorithm.** Metropolis Monte Carlo with an occupied↔empty node swap — the total particle number (density) is conserved. A move is accepted if ΔS ≤ 0, otherwise with probability exp(−β·ΔS).
 
-**Граничные условия.** Решётка 100×100 с **периодическими граничными условиями (тор)**: она замыкается сама на себя.
+**Boundary conditions.** A 100×100 lattice with **periodic boundary conditions (a torus)**: it closes onto itself.
 
-## 4. Что такое Юкава (подробный отчёт)
+## 4. What is Yukawa (detailed report)
 
-### 4.1. Историческая справка
+### 4.1. Historical note
 
-В 1935 году японский физик Хидэки Юкава искал формулу для сильного взаимодействия, удерживающего протоны и нейтроны в ядре. Обычные силы (гравитация, электричество) падают как 1/r² и действуют бесконечно далеко — а ядро слишком маленькое. Юкава предположил, что сила переносится частицами (мезонами), **имеющими массу**: если частица-переносчик безмассовая (фотон), сила 1/r² и бесконечна; если у неё есть масса — поле «устаёт» и затухает экспоненциально.
+In 1935 the Japanese physicist Hideki Yukawa sought a formula for the strong interaction holding protons and neutrons in the nucleus. Ordinary forces (gravity, electricity) fall as 1/r² and act infinitely far — but the nucleus is too small. Yukawa proposed that the force is carried by particles (mesons) **that have mass**: a massless carrier (photon) gives an infinite-range 1/r² force; a massive one makes the field "tire" and decay exponentially.
 
-### 4.2. Формула и её члены
+### 4.2. The formula and its terms
 
 **V(r) = −J0 · e^(−μ r) / r**
 
-- **r (расстояние)** — чем дальше плексоны друг от друга, тем слабее сила.
-- **1/r (геометрия)** — сила распространяется во все стороны (как круги на воде), поэтому падает обратно пропорционально расстоянию.
-- **e^(−μr) (экран)** — главный множитель: при μ > 0 сила затухает экспоненциально. При μ = 0.5 на расстоянии 5–6 клеток сила становится пренебрежимо малой. Это «экранирование» — как если бы между плексонами стояла среда, гасящая притяжение.
-- **J0 (сила)** — амплитуда: насколько сильно плексоны притягиваются. При J0 = 0 притяжения нет.
+- **r (distance)** — the farther apart two plexons are, the weaker the force.
+- **1/r (geometry)** — the force spreads in all directions (like ripples on water), so it falls inversely with distance.
+- **e^(−μr) (screening)** — the key factor: with μ > 0 the force decays exponentially. At μ = 0.5, at 5–6 cells the force becomes negligible. This is "screening" — as if a medium stood between the plexons, damping their attraction.
+- **J0 (strength)** — the amplitude: how strongly plexons attract. If J0 = 0 there is no attraction.
 
-### 4.3. Зачем это нужно (прорыв по сравнению с 4-связностью)
+### 4.3. Why we need it (the breakthrough over 4-connectivity)
 
-В 4-связности плексон чувствует только 4 соседа вплотную: если соседняя клетка пустая — взаимодействия нет. Юкава делает плексоны «мягкими»: каждый плексон создаёт вокруг себя поле (ореол) радиусом 4 клетки и притягивает всё, что в этом радиусе. Это соответствует (а) индуктивному эффекту в полимерах и (б) реальной гравитации, где тела действуют друг на друга через пространство, а не только при касании.
+In 4-connectivity a plexon feels only its 4 touching neighbours: if the neighbouring cell is empty, there is no interaction. Yukawa makes the plexons "soft": each plexon creates a field (halo) of radius 4 cells and attracts everything within it. This matches (a) the inductive effect in polymers and (b) real gravity, where bodies act on each other through space, not only on contact.
 
-### 4.4. Почему r_cutoff = 4
+### 4.4. Why r_cutoff = 4
 
-Считать взаимодействие «все со всеми» — это O(N²) (компьютер «умрёт»). Мы обрезаем радиус на 4 клетках: при μ = 0.5 на 4-й клетке сила падает до e⁻² ≈ 0.13 от исходной — дальше ею можно пренебречь. Это стандартный приём молекулярной динамики.
+Computing "all against all" is O(N²) (the computer would "die"). We cut the radius at 4 cells: at μ = 0.5 the force at the 4th cell is e⁻² ≈ 0.13 of the original — beyond that it can be neglected. This is a standard molecular-dynamics practice.
 
-## 5. Гибкий J0 и «затухание по цепи» (индуктивный эффект)
+## 5. The flexible J0 and "damping along the chain" (inductive effect)
 
-Идея «гибкого J0» возникла из полимерной химии. В макромолекуле смещение электронной плотности от заместителя влияет максимум на 5 связей атомов углерода: между атомами 1 и 6 связь бесконечно мала и не вносит существенного вклада в связь 1–2. Влияние затухает **постепенно, но не обрывается в ноль мгновенно**.
+The "flexible J0" idea came from polymer chemistry. In a macromolecule, a substituent's electron-density shift affects at most ~5 carbon bonds: between atoms 1 and 6 the influence is infinitesimal and does not materially affect the 1–2 bond. The influence decays **gradually but never vanishes abruptly**.
 
-Предложение задать взаимодействие вручную — J(1)=3, J(2)=1, J(3)=0.5, J(4)=0.01 — по сути уже реализуется функцией Юкавы: при J0 = 3 и μ = 0.5 на расстояниях 1, 2, 3, 4 сила равна ≈ 1.82, 0.55, 0.22, 0.10. То есть **Юкава и есть «гибкий J0»**: плавное затухание связи по цепи. Если затухание сделать неестественно резким (на 4-м соседе — обрыв) — получим жёсткую 4-связность; если плавным (Юкава) — получим мягкое поле, способное формировать гладкие структуры.
+The proposal to set the interaction by hand — J(1)=3, J(2)=1, J(3)=0.5, J(4)=0.01 — is in fact already realised by the Yukawa function: at J0 = 3 and μ = 0.5 the forces at distances 1, 2, 3, 4 are ≈ 1.82, 0.55, 0.22, 0.10. That is, **Yukawa *is* the "flexible J0"**: a smooth decay of the coupling along the chain. If the decay is made unnaturally sharp (a cutoff at the 4th neighbour) one gets hard 4-connectivity; if smooth (Yukawa) one gets a soft field able to form smooth structures.
 
-Отсюда же идея **лабильности**: в реальной сети связи рвутся и восстанавливаются, и при восстановлении может встраиваться влияние другого тела. В данной 2D-модели сеть фиксирована (узлы занимаются/освобождаются), а «лабильность» эффективно моделируется именно затухающим полем Юкавы.
+The same logic underlies the idea of **lability**: in a real network, bonds break and re-form, and on re-formation the influence of another body can be incorporated. In this 2D model the lattice is fixed (nodes occupy/free), and "lability" is effectively modelled precisely by the decaying Yukawa field.
 
-## 6. Бинодальный и спинодальный распад: как рождается структура
+## 6. Binodal and spinodal decomposition: how structure is born
 
-Расслоение полимерного раствора идёт двумя механизмами, разделяемыми фазовой диаграммой (энергия Гиббса G по концентрации c):
+Phase separation in a polymer solution proceeds by two mechanisms, separated on the Gibbs free-energy diagram G(c):
 
-- **Бинодаль** — граница метастабильности; распад идёт через **нуклеацию и рост**: образуются изолированные зародыши, которые растут.
-- **Спинодаль** — область, где однородная смесь **абсолютно нестабильна** (∂²G/∂c² < 0): любая микроскопическая флуктуация плотности мгновенно растёт, и система спонтанно распадается на две фазы.
+- **Binodal** — the metastability boundary; decomposition proceeds by **nucleation and growth**: isolated nuclei form and grow.
+- **Spinodal** — the region where the homogeneous mixture is **absolutely unstable** (∂²G/∂c² < 0): any microscopic density fluctuation grows instantly and the system spontaneously separates into two phases.
 
-**Ключевое соотношение (наша гипотеза):** если **скорость роста частиц больше скорости их образования** — это **бинодаль**, и мы получаем отдельные частицы (мало узлов). Если **скорость образования узлов больше скорости их роста** — образуется **гель** (сплошная сетка). **Верхняя точка бифуркации = Большой взрыв** — момент, когда система теряет устойчивость.
+**The key relation (our hypothesis):** if the **rate of growth of particles exceeds the rate of their formation**, this is **binodal** and one obtains *isolated particles* (few nodes). If the **rate of formation of nodes exceeds their growth rate**, a **gel** forms (a contiguous network). **The upper bifurcation point = the Big Bang** — the moment the system loses stability.
 
-**В нашей модели** роль концентрации c играет плотность плексонов, а роль энергии Гиббса G — действие S. Плотность выбирает режим:
+In our model the concentration c is the plexon density and the Gibbs energy is the action S. **The density selects the regime:**
 
-- **Низкая плотность (10 %)** → **бинодальный распад**: изолированные гладкие капли (глобулы). Космологическая интерпретация — рождение отдельных объектов: галактик и их скоплений.
-- **Высокая плотность (50 %)** → **спинодальный распад**: биконтинуальная сетка (гель), где пустоты и нити пронизывают друг друга. Космологическая интерпретация — **космическая паутина** (филаменты и войды).
+- **Low density (10 %)** → **binodal decomposition**: isolated smooth droplets (globules). Cosmological reading — the birth of individual objects: galaxies and their clusters.
+- **High density (50 %)** → **spinodal decomposition**: a bicontinuous network (gel) with voids and filaments threading through each other. Cosmological reading — the **cosmic web** (filaments and voids).
 
-Дальнейшие следствия (гипотезы, см. §11): тёмная материя = «каркас геля» (агрегированные плексоны, не сжавшиеся до звёзд); тёмная энергия = «растворитель» (разреженный фон одиночных плексонов).
+Further consequences (hypotheses, see §11): dark matter = the "gel skeleton" (aggregated plexons not yet collapsed into stars); dark energy = the "solvent" (the rarefied background of single plexons).
 
-### 6.1. Созревание Оствальда (Ostwald ripening) — что это и как проявляется в модели
+### 6.1. Ostwald ripening — what it is and how it appears in the model
 
-**Что это такое.** Созревание Оствальда — это процесс «поедания» мелких капель крупными, который идёт уже **после** того, как фазы разделились. Назван по имени немецкого химика **Вильгельма Оствальда**, описавшего его в 1896 году на примере осадков и эмульсий.
+**What it is.** Ostwald ripening is the process by which large droplets "eat" small ones, taking place **after** the phases have separated. It is named after the German chemist **Wilhelm Ostwald**, who described it in 1896 for precipitates and emulsions.
 
-**Физическая причина.** У мелкой капли отношение поверхности к объёму больше, чем у крупной. Из-за поверхностного натяжения (давление Лапласа ∝ 1/r) вещество на выпуклой поверхности мелкой капли имеет **более высокий химический потенциал**, чем на крупной. Поэтому вещество «растворяется» из мелких капель и «осаждается» на крупных: **крупные растут, мелкие исчезают**. В результате общее число капель уменьшается, средний размер растёт, а суммарная площадь границ (поверхностная энергия) падает.
+**The physical cause.** A small droplet has a larger surface-to-volume ratio than a large one. Because of surface tension (Laplace pressure ∝ 1/r), matter on the convex surface of a small droplet has a **higher chemical potential** than on a large one. Matter therefore "dissolves" from small droplets and "deposits" on large ones: **large grow, small vanish**. The total number of droplets falls, the average size grows, and the total boundary area (surface energy) drops.
 
-**Как это выглядит в наших данных (Юкава, 5 млн шагов).** Ровно эта картина видна в расчёте:
+**How it looks in our data (Yukawa, 5M steps).** Exactly this picture is observed:
 
-| Признак | Направление | Пример (10 %, σ=2.0) |
+| Signature | Direction | Example (10 %, σ=2.0) |
 |---|---|---|
-| P_inf (доля в крупнейшем кластере) | растёт | 0.299 → 0.483 |
-| Perimeter (суммарная длина границ) | падает | 574 → 218 |
-| Max_Size (размер крупнейшего кластера) | растёт | 292 → 472 |
+| P_inf (giant-cluster fraction) | grows | 0.299 → 0.483 |
+| Perimeter (total boundary length) | falls | 574 → 218 |
+| Max_Size (largest-cluster size) | grows | 292 → 472 |
 
-То есть крупный кластер растёт за счёт поглощения мелких, а общая длина границы «материя–пустота» сокращается — это и есть созревание Оствальда.
+The largest cluster grows by absorbing small ones while the total matter/void boundary shrinks — that is Ostwald ripening.
 
-**Почему 4-связность его не показывает.** В жёсткой 4-связности система мгновенно сливается в один монолит (P_inf → 1.0 уже к 500 000 шагов) и «замерзает»: дальше идёт лишь медленное сглаживание границы, но перестройка топологии (поглощение мелких кластеров) уже невозможна. Созревание Оствальда — **динамический процесс перестройки**, поэтому он наблюдается только в мягком поле Юкавы.
+**Why 4-connectivity does not show it.** The hard 4-connectivity collapses at once into a single monolith (P_inf → 1.0 already by 500,000 steps) and "freezes": only a slow boundary smoothing follows, but re-topologisation (absorbing small clusters) is no longer possible. Ostwald ripening is a **dynamical rearrangement process**, so it appears only in the soft Yukawa field.
 
-**Космологический смысл.** Созревание Оствальда — аналог слияния галактик и укрупнения скоплений со временем: мелкие структуры поглощаются крупными, сеть/капли огрубляются. Это и есть «живая эволюция» крупномасштабной структуры, в отличие от застывшего монолита 4-связности.
+**Cosmological meaning.** Ostwald ripening is the analogue of galaxy merging and the coarsening of clusters over time: small structures are absorbed by large ones, the network/droplets coarsen. This is the "living evolution" of large-scale structure, as opposed to the frozen monolith of 4-connectivity.
 
-## 7. Методология расчёта
+## 7. Methodology
 
-### 7.1. Параметры модели
+### 7.1. Model parameters
 
-| Параметр | Значение |
+| Parameter | Value |
 |---|---|
-| Решётка | 100×100 = 10 000 узлов |
-| Границы | периодические (тор) |
-| Алгоритм | Метрополис, обмен «занятый ↔ пустой» (сохраняет плотность) |
-| β (обратная температура) | 1.0 |
-| J0 / λ (притяжение) | {0.0, 0.5, 1.0, 3.0} (скрининг); 3.0 (deep dive) |
-| μ (экранирование) | 0.5 (фиксировано на этапе скрининга) |
+| Lattice | 100×100 = 10,000 nodes |
+| Boundaries | periodic (torus) |
+| Algorithm | Metropolis, occupied↔empty swap (density-conserving) |
+| β (inverse temperature) | 1.0 |
+| J0 / λ (attraction) | {0.0, 0.5, 1.0, 3.0} (screening); 3.0 (deep dive) |
+| μ (screening) | 0.5 (fixed at the screening stage) |
 | r_cutoff | 4 |
-| Плотности | {0.005, 0.01, 0.1, 0.5} → 0.5 %, 1 %, 10 %, 50 % |
-| σ (натяжение) | {0, 0.25, 0.5, 1, 1.5, 2, 2.5, 5, 7.5, 10, 15, 25, 50} |
+| Densities | {0.005, 0.01, 0.1, 0.5} → 0.5 %, 1 %, 10 %, 50 % |
+| σ (tension) | {0, 0.25, 0.5, 1, 1.5, 2, 2.5, 5, 7.5, 10, 15, 25, 50} |
 
-**Аппаратное обеспечение.** Расчёты выполнены на настольном компьютере (домашняя сборка): Windows 10 Pro 22H2 (64-бит); CPU AMD FX-6300 (6 ядер) @ 3.5 ГГц; GPU NVIDIA GeForce GTX 1650 (4 ГБ); RAM 16 ГБ.
+**Hardware.** The computations were carried out on a desktop computer (custom build): Windows 10 Pro 22H2 (64-bit); CPU AMD FX-6300 (6 cores) @ 3.5 GHz; GPU NVIDIA GeForce GTX 1650 (4 GB); RAM 16 GB.
 
-### 7.2. Этап 1 — скрининг
+### 7.2. Stage 1 — screening
 
-Полная матрица: 4 силы × 4 плотности × 13 σ = **208 комбинаций**, каждая **20 000 шагов** (20 000 × 5 = 100 000 итераций). Это черновой быстрый прогон для поиска «вкусных» точек фазового перехода по кривой P_inf(σ) и периметра. Результаты скрининга (фрагмент, 20k шагов; 4-связность λ=3.0 против Юкавы J0=3.0):
+Full matrix: 4 couplings × 4 densities × 13 σ = **208 combinations**, each **20,000 steps** (20,000 × 5 = 100,000 moves). A fast draft run to locate the "interesting" transition points on the P_inf(σ) and perimeter curves. Screening results (fragment, 20k steps; 4-connectivity λ=3.0 vs Yukawa J0=3.0):
 
-| Плотность | σ | 4-связность P_inf | Юкава P_inf | 4-связность периметр | Юкава периметр |
+| Density | σ | 4-conn P_inf | Yukawa P_inf | 4-conn perimeter | Yukawa perimeter |
 |---|---|---|---|---|---|
 | 10 % | 0.0 | 0.995 | 0.004 | 1834 | 3608 |
 | 10 % | 2.0 | 0.942 | 0.088 | 618 | 1032 |
@@ -176,73 +173,72 @@
 | 50 % | 2.0 | 1.000 | 0.734 | 2886 | 2628 |
 | 50 % | 10.0 | 1.000 | 0.353 | 2792 | 2576 |
 
-Наблюдения: 4-связность мгновенно коллапсирует в один кластер (P_inf ≈ 1); Юкава при 10 % держит низкий P_inf (много отдельных капель — бинодаль), при 50 % даёт «рыхлый» динамичный гель (спинодаль).
+Observations: 4-connectivity collapses at once into one cluster (P_inf ≈ 1); Yukawa at 10 % keeps a low P_inf (many separate droplets — binodal), at 50 % gives a "loose", dynamic gel (spinodal).
 
-> Приведён фрагмент (ключевые строки); **полные данные всех 208 комбинаций — в `data/screening/`** (состав файлов и матрица параметров — в [data/screening/README.md](data/screening/README.md)).
+> Shown is a fragment (key rows); the **full data for all 208 combinations is in `data/screening/`** (the file contents and the parameter matrix — in [data/screening/README.md](data/screening/README.md)).
 
-### 7.3. Этап 2 — глубокий расчёт (deep dive)
+### 7.3. Stage 2 — deep dive
 
-На основе скрининга отобраны 4 «вкусные» точки (переход «газ → структура»), для которых проведён длительный расчёт: **4-связность 2.5 млн шагов**, **Юкава 5 млн шагов**. В коде внешний цикл ×5, поэтому 500 000×5 = 2.5M и 1 000 000×5 = 5M.
+Four "interesting" points (the gas → structure transition) were selected and run long: **4-connectivity 2.5 million steps**, **Yukawa 5 million steps**. In the code the outer loop runs ×5, hence 500,000×5 = 2.5M and 1,000,000×5 = 5M.
 
-### 7.4. Исправленные ошибки (важно для воспроизводимости)
+### 7.4. Corrected bugs (important for reproducibility)
 
-1. **«Шахматная доска»** — в ранних прогонах Юкавы система уходила в идеальный шахматный порядок (P_inf ≈ 0.001, гигантский периметр). Причина — **ошибка в коэффициенте локального периметра**: формула `4 − 2·neighbors` вместо `4 − 1·neighbors`. Из-за лишней двойки код считал, что слипание *увеличивает* периметр, и σ работал «наоборот» (разрывал кластеры). Исправлено на честный подсчёт открытых граней в окне 5×5.
-2. **Двойной счёт энергии Юкавы** — при обмене двух близких узлов их взаимодействие учитывалось дважды; исправлено.
-3. **Порядок замера периметра** — периметр считался уже после обмена; исправлено.
-4. **Производительность** — периметр переведён на векторизованный `np.roll`; matplotlib (с осями/текстом) заменён на PIL для черновых кадров (в deep dive используется matplotlib).
-5. **Чекпоинты** — чтение CSV и пропуск уже посчитанных точек (защита от сбоев/обрывов).
-6. **Off-by-one** — финальный кадр на 5 000 000 шагов не сохранился (условие `real_step % 250 000 == 0` не срабатывает на последней итерации 4 999 995); последний сохранённый кадр — 4 750 000 (у 4-связности — 2 250 000). На морфологию это не влияет (разница ~5 % времени), но в подписях указано честно.
+1. **The "checkerboard".** In early Yukawa runs the system drifted into a perfect checkerboard (P_inf ≈ 0.001, a gigantic perimeter). Cause — **an error in the local-perimeter coefficient**: the formula `4 − 2·neighbors` instead of `4 − 1·neighbors`. Because of the extra factor of two the code believed that sticking *increased* the perimeter, so σ acted "in reverse" (tearing clusters apart). Fixed by honestly counting open edges in a 5×5 window.
+2. **Double counting of the Yukawa energy** — when two nearby nodes were swapped their mutual interaction was counted twice; fixed.
+3. **Order of the perimeter measurement** — the perimeter was measured after the swap had already been applied; fixed.
+4. **Performance** — the perimeter was vectorised with `np.roll`; matplotlib (axes/text) was replaced by PIL for draft frames (matplotlib is used in the deep dive).
+5. **Checkpoints** — reading CSV and skipping already-computed points (protection against crashes/interruptions).
+6. **Off-by-one** — the final snapshot at 5,000,000 steps was not saved (the condition `real_step % 250_000 == 0` fails on the last iteration 4,999,995); the last saved frame is 4,750,000 (2,250,000 for 4-connectivity). This does not affect the morphology (~5 % of the time), but the captions state it honestly.
 
-## 8. Обоснование выбора четырёх точек
+## 8. Justification of the choice of the four points
 
-**Почему λ = J0 = 3.0, а не 1.0:** при λ/J0 = 0.5–1.0 тепловой шум (β = 1.0) разрывает связи — система ведёт себя как газ. Значение 3.0 — режим сильного притяжения, где агрегация доминирует над шумом и рождаются настоящие капли и гель.
+**Why λ = J0 = 3.0, not 1.0:** at λ/J0 = 0.5–1.0 the thermal noise (β = 1.0) tears the bonds — the system behaves as a gas. The value 3.0 is the regime of strong attraction where aggregation dominates the noise and real droplets and gel are born.
 
-**Почему плотности 10 % и 50 %:** 10 % — разреженная среда → бинодаль (изолированные капли); 50 % — плотная среда → спинодаль (сплошная сетка). Плотности 0.5 % и 1 % — «пыль»: там макроструктура не видна.
+**Why densities 10 % and 50 %:** 10 % is a rarefied medium → binodal (isolated droplets); 50 % is dense → spinodal (a contiguous network). Densities 0.5 % and 1 % are "dust": no macrostructure is visible there.
 
-**Почему именно эти точки (по кривой «пилы» периметра из скрининга):**
-- **4-связность**: (10 %, σ=2.0) — «дно пилы» (минимум периметра 618); (10 %, σ=2.5) — «скачок» (периметр 972); (50 %, σ=1.5) — резкое падение периметра при образовании геля; (50 %, σ=2.0) — выход на плато (стабильный гель).
-- **Юкава**: (10 %, σ=2.0) — бинодальная зона, капли; (10 %, σ=10.0) — сильное натяжение; (50 %, σ=1.5) — спинодальная зона, гель; (50 %, σ=2.0) — стабильный гель.
+**Why exactly these points (from the "sawtooth" perimeter curve of the screening):**
+- **4-connectivity**: (10 %, σ=2.0) — the sawtooth minimum (perimeter 618); (10 %, σ=2.5) — the jump (perimeter 972); (50 %, σ=1.5) — the sharp perimeter drop at gel formation; (50 %, σ=2.0) — the plateau (stable gel).
+- **Yukawa**: (10 %, σ=2.0) — the binodal zone, droplets; (10 %, σ=10.0) — strong tension; (50 %, σ=1.5) — the spinodal zone, gel; (50 %, σ=2.0) — stable gel.
 
-При 10 % плотности модели различаются: 4-связность берёт σ=2.5 (точку скачка периметра), Юкава — σ=10.0 (сильное натяжение); при 50 % обе берут σ=1.5 и σ=2.0.
+At 10 % density the models differ: 4-connectivity takes σ=2.5 (the perimeter jump), Yukawa takes σ=10.0 (strong tension); at 50 % both take σ=1.5 and σ=2.0.
 
-## 9. Результаты
+## 9. Results
 
-### 9.1. 4-связность (2.5 млн шагов) — «замороженный монолит»
+### 9.1. 4-connectivity (2.5M steps) — the "frozen monolith"
 
-| Точка | P_inf | Периметр | Max_Size |
+| Point | P_inf | Perimeter | Max_Size |
 |---|---|---|---|
-| 10 %, σ=2.0 | 0.967 → **1.0** (с 500k) | 432 → 152 | 996 → 1030 |
+| 10 %, σ=2.0 | 0.967 → **1.0** (from 500k) | 432 → 152 | 996 → 1030 |
 | 10 %, σ=2.5 | 0.982 → **1.0** | 402 → 152 | 976 → 994 |
-| 50 %, σ=1.5 | **1.0** (сразу) | 2214 → 1042 | 4934 |
-| 50 %, σ=2.0 | **1.0** (сразу) | 2140 → 1004 | 5024 |
+| 50 %, σ=1.5 | **1.0** (at once) | 2214 → 1042 | 4934 |
+| 50 %, σ=2.0 | **1.0** (at once) | 2140 → 1004 | 5024 |
 
-Вывод: система быстро образует единственный перколирующий кластер (P_inf → 1.0) и далее лишь медленно сглаживает границу (периметр падает), **не перестраивая топологию**. Визуально — жёсткие «квадратные» структуры с прямыми углами (артефакт кристаллической решётки). Модель не способна к динамической эволюции — для космологии непригодна.
+Conclusion: the system rapidly forms a single percolating cluster (P_inf → 1.0) and thereafter only slowly smooths its boundary (perimeter falls), **without re-topologising**. Visually — hard "square" structures with right angles (an artifact of the crystal lattice). The model cannot evolve dynamically — unsuitable for cosmology.
 
-![4-связность, 10%, σ=2.0, 250k](figures/4conn_2.5M/4conn_D0.1_S2.0_step250000.png)
-![4-связность, 10%, σ=2.0, 1M](figures/4conn_2.5M/4conn_D0.1_S2.0_step1000000.png)
-![4-связность, 10%, σ=2.0, 2.25M](figures/4conn_2.5M/4conn_D0.1_S2.0_step2250000.png)
+![4-connectivity, 10%, σ=2.0, 250k](figures/4conn_2.5M/4conn_D0.1_S2.0_step250000.png)
+![4-connectivity, 10%, σ=2.0, 1M](figures/4conn_2.5M/4conn_D0.1_S2.0_step1000000.png)
+![4-connectivity, 10%, σ=2.0, 2.25M](figures/4conn_2.5M/4conn_D0.1_S2.0_step2250000.png)
+*Evolution of 4-connectivity (10 %, σ=2.0): 250k → 1M → 2.25M steps. An angular monolith; the perimeter falls, the topology does not change.*
 
-**Рис.1** *Эволюция 4-связности (10 %, σ=2.0): 250k → 1M → 2.25M шагов. Угловатый монолит; периметр падает, топология не меняется.*
+### 9.2. Yukawa (5M steps) — "living evolution" (Ostwald ripening)
 
-### 9.2. Юкава (5 млн шагов) — «живая эволюция» (созревание Оствальда)
-
-| Точка | P_inf (250k → 5M) | Периметр (250k → 5M) | Max_Size |
+| Point | P_inf (250k → 5M) | Perimeter (250k → 5M) | Max_Size |
 |---|---|---|---|
 | 10 %, σ=2.0 | 0.299 → **0.483** | 574 → 218 | 292 → 472 |
 | 10 %, σ=10.0 | 0.392 → **0.637** | 562 → 236 | 403 → 655 |
 | 50 %, σ=1.5 | 0.688 → **0.799** | 1312 → 588 | 3376 → 3922 |
 | 50 %, σ=2.0 | 0.688 → **0.720** | 1370 → 588 | 3482 → 3644 |
 
-Выводы по каждой точке:
+Per point:
 
-- **(10 %, σ=2.0)** — бинодальный распад: изолированные гладкие капли медленно сливаются (P_inf растёт 0.30→0.48), периметр падает почти втрое (574→218). Созревание Оствальда: крупные капли поглощают мелкие.
-- **(10 %, σ=10.0)** — то же, но при сильном натяжении: капли компактнее, P_inf достигает ~0.64 и **выходит на плато** (~0.637 к 3.5–5M).
-- **(50 %, σ=1.5)** — спинодальный распад: биконтинуальная сетка; P_inf растёт 0.69→0.80 (насыщение не достигнуто — рост продолжается до конца).
-- **(50 %, σ=2.0)** — стабильный гель; P_inf выходит на плато ~0.72 (последние три замера 0.719/0.720/0.720).
+- **(10 %, σ=2.0)** — binodal decomposition: isolated smooth droplets slowly merge (P_inf 0.30→0.48), the perimeter nearly thirds (574→218). Ostwald ripening: large droplets absorb small ones.
+- **(10 %, σ=10.0)** — the same at strong tension: more compact droplets; P_inf reaches ~0.64 and **plateaus** (~0.637 by 3.5–5M).
+- **(50 %, σ=1.5)** — spinodal decomposition: a bicontinuous network; P_inf 0.69→0.80, still growing at the end (no saturation).
+- **(50 %, σ=2.0)** — a stable gel; P_inf plateaus at ~0.72 (the last three readings 0.719/0.720/0.720).
 
-Эволюция P_inf по шагам (Юкава, 5M; полные ряды — в `data/yukawa_5M.csv`):
+Evolution of P_inf (Yukawa, 5M; full series — in `data/yukawa_5M.csv`):
 
-| Шаг | 10 %, σ=2.0 | 10 %, σ=10.0 | 50 %, σ=1.5 | 50 %, σ=2.0 |
+| Step | 10 %, σ=2.0 | 10 %, σ=10.0 | 50 %, σ=1.5 | 50 %, σ=2.0 |
 |---|---|---|---|---|
 | 250k | 0.299 | 0.392 | 0.688 | 0.688 |
 | 1M | 0.380 | 0.514 | 0.729 | 0.704 |
@@ -251,152 +247,148 @@
 | 4M | 0.467 | 0.638 | 0.788 | 0.719 |
 | 5M | 0.483 | 0.637 | 0.799 | 0.720 |
 
-![Юкава, 10%, σ=2.0, 250k](figures/yukawa_5M/yukawa_D0.1_S2.0_step250000.png)
-![Юкава, 10%, σ=2.0, 2M](figures/yukawa_5M/yukawa_D0.1_S2.0_step2000000.png)
-![Юкава, 10%, σ=2.0, 4.75M](figures/yukawa_5M/yukawa_D0.1_S2.0_step4750000.png)
+![Yukawa, 10%, σ=2.0, 250k](figures/yukawa_5M/yukawa_D0.1_S2.0_step250000.png)
+![Yukawa, 10%, σ=2.0, 2M](figures/yukawa_5M/yukawa_D0.1_S2.0_step2000000.png)
+![Yukawa, 10%, σ=2.0, 4.75M](figures/yukawa_5M/yukawa_D0.1_S2.0_step4750000.png)
+*Evolution of Yukawa (10 %, σ=2.0): 250k → 2M → 4.75M steps. Smooth droplets; binodal decomposition + Ostwald ripening.*
 
-**Рис.2** *Эволюция Юкавы (10 %, σ=2.0): 250k → 2M → 4.75M шагов. Гладкие капли; бинодальный распад + созревание Оствальда.*
+![Yukawa, 50%, σ=1.5, 250k](figures/yukawa_5M/yukawa_D0.5_S1.5_step250000.png)
+![Yukawa, 50%, σ=1.5, 2M](figures/yukawa_5M/yukawa_D0.5_S1.5_step2000000.png)
+![Yukawa, 50%, σ=1.5, 4.75M](figures/yukawa_5M/yukawa_D0.5_S1.5_step4750000.png)
+*Evolution of Yukawa (50 %, σ=1.5): 250k → 2M → 4.75M steps. A bicontinuous network (the cosmic web).*
 
-![Юкава, 50%, σ=1.5, 250k](figures/yukawa_5M/yukawa_D0.5_S1.5_step250000.png)
-![Юкава, 50%, σ=1.5, 2M](figures/yukawa_5M/yukawa_D0.5_S1.5_step2000000.png)
-![Юкава, 50%, σ=1.5, 4.75M](figures/yukawa_5M/yukawa_D0.5_S1.5_step4750000.png)
+> **About the plateau (honestly).** Full thermodynamic equilibrium was not reached at 5 million steps. The growth of P_inf decelerates (resembling an exponential approach to saturation): points (10 %, σ=10.0) and (50 %, σ=2.0) plateau, while (10 %, σ=2.0) and (50 %, σ=1.5) keep growing slowly. Confirming saturation requires longer runs (of order 10–15 million steps).
 
-**Рис.3** *Эволюция Юкавы (50 %, σ=1.5): 250k → 2M → 4.75M шагов. Биконтинуальная сетка (космическая паутина).*
+### 9.3. Comparison with the preliminary run (2.5M)
 
-> **О плато:** Полное термодинамическое равновесие на 5 млн шагах не зафиксировано. Рост P_inf замедляется (похоже на экспоненциальное приближение к насыщению): точки (10 %, σ=10.0) и (50 %, σ=2.0) выходят на плато, тогда как (10 %, σ=2.0) и (50 %, σ=1.5) продолжают медленно расти. Для подтверждения насыщения требуются более длинные прогоны (порядка 10–15 млн шагов).
+The 2.5M (Yukawa) data give the same picture qualitatively but smaller values (different random seeds): (10 %, σ=2.0) 0.324→0.440; (10 %, σ=10.0) 0.178→0.291; (50 %, σ=1.5) 0.896→0.939; (50 %, σ=2.0) 0.717→0.881. This confirms that **5M is the main result** and 2.5M is preliminary (the seed sensitivity is stated explicitly).
 
-### 9.3. Сравнение с предварительным расчётом (2.5 млн)
+### 9.4. Animations (GIF)
 
-Данные 2.5M (Юкава) дают ту же картину качественно, но меньшие значения (разные случайные seed): (10 %, σ=2.0) 0.324→0.440; (10 %, σ=10.0) 0.178→0.291; (50 %, σ=1.5) 0.896→0.939; (50 %, σ=2.0) 0.717→0.881. Это подтверждает, что **5M — основной результат**, а 2.5M — предварительный (чувствительность к seed явно указана).
+Full evolution (embedded animations; they play inline on GitHub):
 
-### 9.4. Анимации (GIF)
+![4-connectivity, 10 %, σ=2.0 (2.5M)](gif/4conn_D0.1_S2.0.gif)
 
-Полная эволюция:
+![Yukawa, 10 %, σ=2.0 (5M)](gif/yukawa_5M_D0.1_S2.0.gif)
 
-![4-связность, 10 %, σ=2.0 (2.5M)](gif/4conn_D0.1_S2.0.gif)
+![Yukawa, 50 %, σ=1.5 (5M)](gif/yukawa_5M_D0.5_S1.5.gif)
 
-![Юкава, 10 %, σ=2.0 (5M)](gif/yukawa_5M_D0.1_S2.0.gif)
+![Yukawa, 50 %, σ=2.0 (5M)](gif/yukawa_5M_D0.5_S2.0.gif)
 
-![Юкава, 50 %, σ=1.5 (5M)](gif/yukawa_5M_D0.5_S1.5.gif)
+All 12 animations — in the [`gif/`](gif/) folder; frame sets for self-stitching — in `gif_assemble/`.
 
-![Юкава, 50 %, σ=2.0 (5M)](gif/yukawa_5M_D0.5_S2.0.gif)
+## 10. Comparison with Yadav (2026)
 
-Все 12 анимаций — в каталоге [`gif/`](gif/); наборы кадров для самостоятельной сшивки — в `gif_assemble/`.
+We read the article [1] and its supplementary code. The comparison:
 
-## 10. Сравнение с Yadav (2026)
+> **About the terms "micro/macro".** Here they refer to the *level of description of the model*: Yadav solves a continuum concentration field (a macro-description), we move individual discrete elements — plexons (a micro-description). Both approaches describe **one and the same object** — the large-scale structure of the Universe.
 
-Мы прочитали статью [1] и её дополнительный код (supplementary). Итог сравнения:
-
-> **О терминах «микро/макро».** Здесь они относятся к *уровню описания модели*: Yadav решает континуальное поле концентрации (макроописание), мы двигаем отдельные дискретные элементы — плексоны (микроописание). Оба подхода описывают **один и тот же объект** — крупномасштабную структуру Вселенной.
-
-| Критерий | Yadav (2026) | Наша работа |
+| Criterion | Yadav (2026) | This work |
 |---|---|---|
-| Подход | макроскопический, феноменологический | микроскопический, дискретный |
-| Уравнение | Кана–Хилларда (континуальное PDE) | Метрополис на решётке (плексоны) |
-| Потенциал | двойная яма f(c)=αc²(1−c)² | Юкава J0·e^(−μr)/r + σ·Perimeter |
-| Плотность | фиксирована c0 = 0.317 (Planck Ωm) | **свип 0.5–50 %**, выделены бинодаль/спинодаль |
-| Режимы | только спинодаль (биконтинуум) | **бинодаль (капли) vs спинодаль (гель)** |
-| Сравнение моделей | нет | **4-связность vs Юкава** |
-| Созревание Оствальда | упоминается | **наблюдается в данных** |
-| Сетка/разрешение | 1000×1000, 500 шагов, FFT | 100×100, 2.5–5 млн шагов, MC |
-| Метрики | void fraction 0.416, filamentarity 0.42, P(k), growth factor | P_inf, периметр, Max_Size |
-| Код | есть (supplementary Python) | есть (открытый, воспроизводимый) |
-| Связь с данными | DES/Subaru, Planck 2018 | пока нет (будущая работа) |
+| Approach | macroscopic, phenomenological | microscopic, discrete |
+| Equation | Cahn–Hilliard (continuum PDE) | Metropolis on a lattice (plexons) |
+| Potential | double well f(c)=αc²(1−c)² | Yukawa J0·e^(−μr)/r + σ·Perimeter |
+| Density | fixed c0 = 0.317 (Planck Ωm) | swept 0.5–50 %, binodal/spinodal separated |
+| Regimes | spinodal only (bicontinuum) | **binodal (droplets) vs spinodal (gel)** |
+| Model comparison | none | **4-connectivity vs Yukawa** |
+| Ostwald ripening | mentioned | **observed in the data** |
+| Grid/resolution | 1000×1000, 500 steps, FFT | 100×100, 2.5–5M steps, MC |
+| Metrics | void fraction 0.416, filamentarity 0.42, P(k), growth factor | P_inf, perimeter, Max_Size |
+| Code | available (supplementary Python) | available (open, reproducible) |
+| Connection to data | DES/Subaru, Planck 2018 | not yet (future work) |
 
-**Ключевые отличия, которые мы должны честно зафиксировать:**
+**Key differences to state honestly:**
 
-1. **Код Yadav.** Полный Python-скрипт опубликован в supplementary (файл `BMS-CPHS-2025-15-Suppl-MS.pdf`) статьи и выложен в открытый доступ. Преимущество нашего кода — **другая физика и воспроизводимость двух моделей**.
-2. **Yadav знает про бинодаль/спинодаль** (фазовая диаграмма на его Рис. 1c и проверка ∂²f/∂c² в коде), **но не развивает дихотомию бинодаль/спинодаль как два режима** и **не делает свипа плотности**. Он фиксирует общепринятое значение c0 = 0.317 и остаётся в спинодальной области. **Мы же впервые в этом контексте наблюдаем оба режима как функцию плотности**: 10 % → бинодальные изолированные капли (галактики), 50 % → спинодальная биконтинуальная сетка (паутина), плюс явное сравнение жёсткой 4-связности с мягкой Юкавой.
-3. **Позиционирование:** мы даём микроскопический механизм, который порождает те же структуры, что макроскопически описаны Yadav.
-4. **Оговорка (гипотеза, требующая вывода):** утверждение, что уравнение Кана–Хилларда является крупнозернистым (coarse-grained) пределом нашей дискретной модели, пока **не выведено формально** — до получения вывода оно считается гипотезой, а не фактом. Формальный вывод — отдельная задача на будущее.
+1. **Yadav has code.** Contrary to an early discussion in the chat, the full Python script is published in the supplementary material (`BMS-CPHS-2025-15-Suppl-MS.pdf`). Our advantage is not "he has no code" but **different physics and a reproducible two-model comparison**.
+2. **Yadav knows about binodal/spinodal** (the phase diagram in his Fig. 1c and a ∂²f/∂c² check in his code), **but does not develop the binodal/spinodal dichotomy as two regimes and does not sweep the density**. He fixes c0 = 0.317 and stays in the spinodal region. **We, in this context, observe both regimes as a function of density for the first time**: 10 % → binodal isolated droplets (galaxies), 50 % → a spinodal bicontinuous network (the web), plus an explicit comparison of hard 4-connectivity with soft Yukawa.
+3. **Positioning:** we provide a microscopic mechanism that produces the same structures Yadav describes macroscopically. **Caveat (a hypothesis requiring derivation):** the claim that the Cahn–Hilliard equation is the coarse-grained limit of our discrete model has **not been formally derived** — until it is, it remains a hypothesis, not a fact. The formal derivation is a separate future task.
 
-**Наш главный вклад:** 
-1. Мы **обнаружили и воспроизвели оба режима** — бинодальный (изолированные капли при 10 %) и спинодальный (биконтинуальная сетка при 50 %) — как функцию плотности, чего в работе Yadav нет;
-2. Мы показали, что наша дискретная модель воспроизводит **ту же качественную морфологию** (капли/филаменты/войды), что и макроскопическое уравнение Кана–Хилларда у Yadav. **Граница честности:** это качественное (морфологическое) соответствие; количественного сравнения (void fraction, filamentarity, спектр мощности, наложение на DES) мы пока не проводили — это следующий этап.
+**Our main contribution (in short).** We (1) **discovered and reproduced both regimes** — binodal (isolated droplets at 10 %) and spinodal (a bicontinuous network at 50 %) — as a function of density, which is absent in Yadav's work; and (2) showed that our discrete model reproduces the **same qualitative morphology** (droplets/filaments/voids) as Yadav's macroscopic Cahn–Hilliard equation. **Boundary of honesty:** this is a qualitative (morphological) correspondence; the quantitative comparison (void fraction, filamentarity, power spectrum, overlay on DES) has not been performed — that is the next stage.
 
-## Часть III. Обоснование и справочные материалы
+---
 
-*Разделы 11–14: полная формулировка гипотезы, честные границы работы, инвентарь файлов и литература.*
+## Part III. Justification and reference materials
 
-## 11. Теоретическая гипотеза (полная формулировка)
+*Sections 11–14: the full statement of the hypothesis, the honest boundaries of the work, the file inventory, and the references.*
 
-> Раздел ниже — **полная формулировка гипотезы** (та же, что в препринте, Часть I). 2D-расчёт напрямую проверяет только её часть — агрегацию и фазовое разделение; остальное — гипотеза. Что подтверждено, а что нет — в конце раздела.
+## 11. The theoretical hypothesis (full statement)
 
-### 11.1. Отправная точка: что такое гравитация
+> The section below is the **full statement of the hypothesis** (the same as in the preprint, Part I). The 2D run directly tests only its aggregation/phase-separation part; the rest is hypothesis. What is and is not confirmed — at the end of the section.
 
-Два тела притягиваются; силы равны и противоположны, но малое тело «падает» к большому, а не наоборот. Эта асимметрия — свойство не силы, а **инерции**, и разворачивается она во времени. Отсюда шаг к замене «частица в пустоте, притягивающая другую частицу» на «сеть узлов, в которой плотный комок узлов тянет за собой остальную сеть».
+### 11.1. The starting question: what is gravity
 
-### 11.2. Плексонная сеть
+Two bodies attract; the forces are equal and opposite, yet the small one "falls" toward the large one and not vice versa. This asymmetry is a property not of the force but of **inertia**, and it unfolds in time. Hence the move from "a particle in a void attracting another particle" to "a network of nodes in which a dense clump of nodes pulls on the rest of the network".
 
-Пространство-время — не континуум, в котором движутся частицы, а **сеть, узлы которой — элементарные сущности**. Узел — не частица, не волна, не точка; это узел сети. Термин «плексон» (лат. *plexus* «сплетение») используется в новом физическом смысле (о происхождении термина — §2). Аналогия — рыболовная сеть: узлы — плексоны, ячейки — пространство.
+### 11.2. The plexon network
 
-### 11.3. Агрегация и масса
+Spacetime is not a continuum in which particles move but a **network whose nodes are the elementary entities**. A node is not a particle, not a wave, not a point; it is a knot of the network. The term **plexon** (Latin *plexus*, "plait/weave") is used in a new physical sense (on the origin of the term — §2). Analogy — a fishing net: the knots are the plexons, the cells are space.
 
-Одиночный плексон имеет «вес» 1; агрегат из N плексонов — вес N. **Масса — коллективное свойство агрегации**: M ∝ N. Одиночный плексон/разреженная сеть — **поле**; агрегат/плотная сеть — **тело**. Два режима одной сети, как вода и лёд. (Иллюстративные, не расчётные масштабы: кластер N ≈ 10; атом N ≈ 10⁶⁰; звезда N ≈ 10¹²⁰; чёрная дыра N → ∞.)
+### 11.3. Aggregation and mass
 
-### 11.4. Гравитация как упругость (натяжение) сети
+A single plexon has "weight" 1; an aggregate of N plexons has weight N. **Mass is a collective property of aggregation**: M ∝ N. A single plexon / rarefied network — **field**; an aggregate / dense network — **body**. Two regimes of one network, like water and ice. (Illustrative, not computed, scales: a cluster N ≈ 10; an atom N ≈ 10⁶⁰; a star N ≈ 10¹²⁰; a black hole N → ∞.)
 
-Гравитация — **не фундаментальная сила, а упругость сети**. Плотный агрегат локально напрягает сеть; сеть стремится снять это напряжение, подтягивая соседние узлы к агрегату. Чем больше узлов собрано в комок, тем сильнее он тянет соседей — грубо это и даёт пропорциональность притяжения массе. Два тела испытывают равное и противоположное натяжение; более лёгкое (меньшая инерция) ускоряется сильнее — воспроизводится асимметрия падения из §11.1 без дальнодействующей силы.
+### 11.4. Gravity as the elasticity (tension) of the network
 
-### 11.5. Знакопеременность: единое происхождение тёмной материи и тёмной энергии
+Gravity is **not a fundamental force but the elasticity of the network**. A dense aggregate locally strains the network; the network relieves the strain by pulling neighbouring nodes toward the aggregate. The more nodes are gathered into a clump, the harder it pulls its neighbours — roughly, this yields the proportionality of attraction to mass. Two bodies experience equal and opposite tension; the lighter one (less inertia) accelerates more — reproducing the falling asymmetry of §11.1 without action at a distance.
 
-У плексона есть **знак q = ±1**, меняющийся при агрегации: одиночный — «+», агрегат — «−». Взаимодействие:
+### 11.5. Sign-alternation: a unified origin of dark matter and dark energy
 
-**F = −G · q₁ q₂ · N₁ N₂ / r²** — *где q — знак плексона (±1), N — число плексонов в агрегате, r — расстояние, G — константа связи.*
+A plexon carries a **sign q = ±1** that flips upon aggregation: a single plexon is "+", an aggregate is "−". The interaction:
 
-Следствия из одного постулата:
+**F = −G · q₁ q₂ · N₁ N₂ / r²** — *where q is the plexon sign (±1), N the number of plexons in an aggregate, r the distance, G a coupling constant.*
 
-- **Тёмная энергия.** Разреженный фон одиночных («+») плексонов отталкивает агрегаты («−»). Однородный фон дальних плексонов даёт постоянный потенциал Φ ≈ 4πρ₀/μ² *(ρ₀ — плотность дальних плексонов; 3D-оценка: интеграл ∫ρ₀·e^(−μr)/r d³r)*       — эффективную космологическую постоянную. Ускоренное расширение = фон-«растворитель» расталкивает материю.
-- **Тёмная материя.** Из-за смены знака при агрегации притяжение агрегатов растёт **сверхлинейно** с N → кривые вращения галактик без отдельной частицы тёмной материи.
+Consequences of a single postulate:
 
-В стандартной картине ТМ и ТЭ — разные сущности; здесь это **одна сущность — дальние плексоны** — с двух сторон: ближние агрегаты притягивают, дальний фон отталкивает.
+- **Dark energy.** The rarefied background of single ("+") plexons repels aggregates ("−"). A uniform background of far plexons produces a constant potential Φ ≈ 4πρ₀/μ² *(ρ₀ — the density of far plexons; a 3D estimate: the integral ∫ρ₀·e^(−μr)/r d³r)* — an effective cosmological constant. Accelerated expansion = the background "solvent" pushing matter apart.
+- **Dark matter.** Because the sign flips on aggregation, the attraction between aggregates grows **superlinearly** with N → galaxy rotation curves without a separate dark-matter particle.
 
-### 11.6. Экранирование и иерархия масштабов
+In the standard picture DM and DE are different entities; here they are **one entity — the far plexons** — seen from two sides: near aggregates attract, the distant background repels.
 
-Одиночный плексон действует коротко, крупный агрегат — дальше. Записываем как зависимость длины экранирования от размера:
+### 11.6. Screening and the hierarchy of scales
 
-**μ²(N) = μ₀² / N^α** — *где N — размер агрегата; μ — обратная длина экранирования; μ₀, α — параметры модели.*
+A single plexon acts over a short range, a large aggregate farther. We encode this as a size-dependent screening length:
 
-Эффективный радиус растёт с N (чёрная дыра «чувствует» всё, одиночный плексон — только соседей). Возникающий парный потенциал — экранированный (по Yukawa):
+**μ²(N) = μ₀² / N^α** — *where N is the aggregate size; μ the inverse screening length; μ₀, α model parameters.*
 
-**G(r) = (1/4πr) · e^(−μr)** — функция Грина оператора (−∇² + μ²) в 3D (вклад одного плексона в потенциал). *Оговорка: в 2D функция Грина иная — K₀(μr)/(2π); мы намеренно берём 3D-форму Юкавы e^(−μr)/r как модельный потенциал (гипотеза нацелена на 3D), и именно эта форма используется в численной части (§4).* Отсюда иерархия масштабов — плексоны → кварки → протоны → атомы → звёзды — как устойчивые формы одной сети; каждый уровень — агрегат предыдущего (фрактальность, одни правила).
+The effective range grows with N (a black hole "feels" everything; a single plexon only its neighbours). The emergent pair potential is the screened (Yukawa) form:
 
-### 11.7. Толща пузыря и перколяция
+**G(r) = (1/4πr) · e^(−μr)** — *the Green's function of the operator (−∇² + μ²) in 3D (the contribution of one plexon to the potential). Caveat: in 2D the Green's function is different — K₀(μr)/(2π); we deliberately take the 3D Yukawa form e^(−μr)/r as the model potential (the hypothesis targets 3D), and this is exactly the form used in the numerical part (§4).* Hence a hierarchy of scales — plexons → quarks → protons → atoms → stars — as stable forms of one network; each level is an aggregate of the previous one (fractality, one set of rules).
 
-Наблюдаемая Вселенная — в **толще стенки расширяющегося «пузыря»** (не на поверхности, не в пустоте). Красное смещение — предел видимости, заданный плотностью толщи, а не край Вселенной. Ранняя однородная стенка, насыщенная плексонами, испытала флуктуации: где плотность росла — началась агрегация, где падала — открылись войды; в некоторый момент произошёл **перколяционный переход** — однородная «плёнка» разделилась на кластеры и войды. (В уточнённой формулировке: пузырь «не лопнул», а претерпел **фазовый переход** — сегрегацию, как масло и вода, без разрыва метрики.) 
-*Сама постановка «мы живём внутри доменной стенки» не нова — она предложена В. А. Рубаковым и М. Е. Шапошниковым (1983) [5]. Специфика нашей работы — перколяционный фазовый переход в толще стенки и вывод морфологии из дискретной агрегации плексонов.*
+### 11.7. The bubble wall and percolation
 
-### 11.8. Формализация: CDT и действие
+The observable Universe lies in the **thickness of the wall of an expanding "bubble"** (not on a surface, not in a void). Redshift is a visibility limit set by the density of the wall, not the edge of the Universe. The early homogeneous wall, saturated with plexons, underwent fluctuations: where the density grew, aggregation began; where it fell, voids opened; at some moment a **percolation transition** occurred — the homogeneous "film" separated into clusters and voids. (In the refined formulation: the bubble "did not burst" but underwent a **phase transition** — segregation, like oil and water, without tearing the metric.) *An honest citation: the very idea of "living inside a domain wall" is not new — it was proposed by V. A. Rubakov and M. E. Shaposhnikov (1983) [5]. What is specific to this work is the percolation phase transition in the thickness of the wall and the derivation of the morphology from discrete aggregation of plexons.*
 
-Для перевода в вычислимую форму гипотеза записана на языке причинной динамической триангуляции (CDT) с членом агрегации и поверхностным членом:
+### 11.8. Formalisation: CDT and the action
 
-**S = −κ₂N₂ + κ₄N₄ + Δ(…) − λ Σ N² + σ Σ A_boundary** — *схематическая запись действия CDT (размерность слагаемых зависит от размерности симплексов); κ₂, κ₄, Δ — константы CDT; N₂, N₄ — числа симплексов; N — число плексонов в кластере; A_boundary — площадь границы.*
+To make the hypothesis computable, it was cast in the language of Causal Dynamical Triangulation (CDT), with an aggregation term and a surface term:
 
-Агрегационный член −λ Σ N² (минус: агрегация выгодна) — движущая сила; поверхностный член +σ Σ A (натяжение) штрафует рваные границы и заставляет собираться в компактные глобулы. Гравитация здесь **эмерджентна** — следствие фазового перехода в сети плексонов, а не фундаментальная сила.
+**S = −κ₂N₂ + κ₄N₄ + Δ(…) − λ Σ N² + σ Σ A_boundary** — *a schematic CDT action (the simplex dimension of the terms depends on the dimension); κ₂, κ₄, Δ are the CDT constants; N₂, N₄ the simplex numbers; N the number of plexons in a cluster; A_boundary the boundary area.*
 
-**Что подтверждено 2D-расчётом, а что нет.** Подтверждено: агрегация плексонов порождает капли (бинодаль) и сетку (спинодаль); морфология зависит от плотности (10 % vs 50 %); мягкое поле Юкавы необходимо для гладких структур, 4-связность замерзает. **Не подтверждено:** плексоны как узлы реального пространства-времени; гравитация как упругость сети; знакопеременность и её следствия (ТМ/ТЭ); зависимость экранирования μ²(N)=μ₀²/N^α и вывод юкавской формы; геометрия «толщи пузыря»; наложение на DES/Subaru; привязка плотностей к Planck Ωm=0.317; выход на полное равновесие.
+The aggregation term −λ Σ N² (the minus: aggregation is favourable) is the driver; the surface term +σ Σ A (tension) penalises ragged boundaries and forces compact globules. Gravity here is **emergent** — a consequence of a phase transition in the plexon network, not a fundamental force.
 
-## 12. Ограничения и честные границы
+**What the 2D run confirms and what it does not.** Confirmed: plexon aggregation produces droplets (binodal) and a network (spinodal); the morphology depends on the density (10 % vs 50 %); a soft Yukawa field is necessary for smooth structures, 4-connectivity freezes. **Not confirmed:** plexons as the nodes of real spacetime; gravity as network elasticity; sign-alternation and its consequences (DM/DE); the screening dependence μ²(N)=μ₀²/N^α and the derivation of the Yukawa form; the bubble-wall geometry; the overlay on DES/Subaru; the tie of the densities to Planck Ωm=0.317; full equilibrium.
 
-1. **Статистика.** Каждая точка рассчитана **один раз (один прогон, один seed)**; дисперсия результатов по случайным начальным условиям **не оценена**.
-2. **Мы НЕ накладывали** наши симуляции на карты звёздного неба (DES/Subaru) и **не строили** корреляционные функции. Визуальное сходство морфологии (капли/сетка) обсуждается на уровне феноменологического сравнения с Yadav (2026). Прямое наложение — следующий этап.
-3. Плотности 10 % и 50 % — модельные, **не привязаны** к Planck Ωm = 0.317 (Yadav использует именно 0.317).
-4. Полное равновесие не достигнуто (нужны 10–15 млн шагов).
-5. GPU (PyTorch/CuPy) **не дал ускорения** для этой задачи — финальные результаты получены на CPU. Код GPU-вариантов лежит в `experiments/` с разбором причин (последовательный Метрополис + малая решётка 100×100).
-6. Уравнение Кана–Хилларда **не решалось** нами (только обсуждалось как макропредел).
-7. Финальный кадр на 5 000 000 шагов не сохранён (off-by-one) — используется кадр 4 750 000 (у 4-связности 2 250 000).
+## 12. Limitations and honest boundaries
 
-## 13. Инвентарь файлов и кода
+1. **Statistics.** Each point was run **once (one run, one seed)**; the variance over random initial conditions **has not been estimated**.
+2. **We did NOT overlay** our simulations on sky maps (DES/Subaru) and did **not build** correlation functions. The visual morphological similarity (droplets/network) is discussed at the level of a phenomenological comparison with Yadav (2026). A direct overlay is the next stage.
+3. The densities 10 % and 50 % are model values, **not tied** to Planck Ωm = 0.317 (which Yadav uses).
+4. Full equilibrium was not reached (10–15M steps are needed).
+5. GPU (PyTorch/CuPy) **gave no speedup** for this task — the final runs are CPU. The GPU-variant code is in `experiments/` with an analysis of the causes (the sequential Metropolis loop + the small 100×100 lattice).
+6. The Cahn–Hilliard equation was **not solved** by us (only discussed as the macro-limit).
+7. The final snapshot at 5,000,000 steps was not saved (off-by-one) — the 4,750,000 frame is used (2,250,000 for 4-connectivity).
 
-**Данные:** `4conn_2.5M.csv`, `yukawa_2.5M.csv`, `yukawa_5M.csv`, `summary_2.5M.xlsx` (в `data/`).
+## 13. File and code inventory
 
-**Код:** `simulation_4conn_2.5M.ipynb`, `simulation_yukawa_2.5M.ipynb`, `simulation_yukawa_5M.ipynb` (в `src/`). GPU-варианты (PyTorch/CuPy, без ускорения) — в `experiments/`. Соответствие исходным именам — в `RENAME_MAP.md`.
+**Data:** `4conn_2.5M.csv`, `yukawa_2.5M.csv`, `yukawa_5M.csv`, `summary_2.5M.xlsx` (in `data/`).
 
-**Изображения:** кадры эволюции в `figures/` (по точкам и шагам 250k…4.75M); анимации в `gif/`; наборы кадров для самостоятельной сшивки — в `gif_assemble/`.
+**Code:** `simulation_4conn_2.5M.ipynb`, `simulation_yukawa_2.5M.ipynb`, `simulation_yukawa_5M.ipynb` (in `src/`). GPU variants (PyTorch/CuPy, no speedup) — in `experiments/`. The correspondence to the original names — in `RENAME_MAP.md`.
 
-**Литература для анализа:** статья Yadav и его опубликованный код (supplementary) — в свободном доступе на сайте издателя (см. ссылку).
+**Figures:** evolution frames in `figures/` (by point and step, 250k…4.75M); animations in `gif/`; frame sets for self-stitching — in `gif_assemble/`.
 
-## 14. Литература
+**Literature for the analysis:** the Yadav article and his published code (supplementary) — in the source-materials folder (see `RENAME_MAP.md`).
+
+## 14. References
 
 1. N. Yadav, *A spinodal decomposition model for the large-scale structure of the universe*, Current Physics **3**, e27723348461389 (2026). DOI: [10.2174/0127723348461389260423123250](https://doi.org/10.2174/0127723348461389260423123250).
 2. J. W. Cahn, J. E. Hilliard, *Free energy of a nonuniform system. I. Interfacial free energy*, J. Chem. Phys. **28**, 258 (1958). DOI: [10.1063/1.1744102](https://doi.org/10.1063/1.1744102).

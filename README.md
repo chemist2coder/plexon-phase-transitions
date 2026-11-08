@@ -1,181 +1,175 @@
-# Плексон-сетевая модель фазовых переходов и крупномасштабной структуры Вселенной
-
-**Plexon Network Model of Phase Transitions and Large-Scale Structure of the Universe**
+# Plexon Network Model of Phase Transitions and Large-Scale Structure of the Universe
 
 *2D Monte Carlo study of aggregation: Yukawa vs 4-connectivity*
 
-Автор: Victor Boyko · GitHub: [@chemist2coder](https://github.com/chemist2coder) · jade.cups@gmail.com
+Author: Victor Boyko · GitHub: [@chemist2coder](https://github.com/chemist2coder) · jade.cups@gmail.com
 
-*Русская версия. Основной README — на английском: [README.md](README.md).*
+*Русская версия — [README.ru.md](README.ru.md).*
 
-## О проекте
+---
 
-Репозиторий содержит вычислительную модель (2D, решётка 100×100 узлов, алгоритм Метрополиса), которая исследует, как из **микроскопической агрегации дискретных элементов (плексонов)** возникают **макроскопические структуры** — от изолированных капель (прототип галактик) до сплошной биконтинуальной сетки (прототип космической паутины). Проект связывает статистическую физику (Монте-Карло), полимерную термодинамику (бинодальный/спинодальный распад) и космологию (формирование крупномасштабной структуры).
+## About the project
 
-> **Статус модели.** Предлагаемую модель можно назвать **игрушечной (toy) моделью**, её цель — **сознательная проверка гипотезы в 2D** (с последующим переходом к 3D). Она показывает, что механизм агрегации плексонов действительно порождает ожидаемые структуры (капли при 10 %, сетку при 50 %), то есть результат **согласуется с гипотезой**. При этом 2D-модель моделирует **только агрегацию**, мы не проводим симуляцию пространства-времени напрямую; укрепить подтверждение гипотезы расчётом должен переход к 3D и прямое сравнение с астрофизическими данными. Что уже подтверждено, а что остаётся гипотезой — см. в [THEORY.ru.md](THEORY.ru.md) (§5, §11–§12).
+This repository contains a computational model (2D, a 100×100 lattice, the Metropolis algorithm) that investigates how **macroscopic structures** — from isolated droplets (prototype of galaxies) to a contiguous bicontinuous network (prototype of the cosmic web) — emerge from the **microscopic aggregation of discrete elements (plexons)**. The project bridges statistical physics (Monte Carlo), polymer thermodynamics (binodal/spinodal decomposition), and cosmology (formation of large-scale structure).
 
-> **О статусе работы.** Это первичное рассмотрение гипотезы **глазами химика** (полимерная физика — родной язык бинодального/спинодального распада). Работа сознательно ограничена 2D-моделью, все гипотезы помечены явно; цель — открыть обсуждение, а не объявить готовую теорию.
+> **Status of the model.** The model we propose can be called a *toy model*; its aim is a **deliberate test of the hypothesis in 2D** (with a subsequent move to 3D). It shows that the plexon aggregation mechanism actually produces the expected structures (droplets at 10%, a network at 50%), i.e. the result is *consistent* with the hypothesis. The 2D model, however, covers **only the aggregation step** — we do not simulate spacetime directly; strengthening the confirmation by calculation requires the move to 3D and a direct comparison with astrophysical data. What is confirmed and what remains a hypothesis — see [THEORY.md](THEORY.md) (§5, §11–§12).
 
-Мы сравниваем **две модели взаимодействия**:
+> **Status of the work.** This is a first, preliminary examination of the hypothesis, written by an author whose background is chemistry (polymer physical chemistry) rather than professional cosmology. This is not a weakness but a vantage point: polymer physics is the native language of binodal/spinodal decomposition — the toolkit used throughout — and the Cahn–Hilliard framework itself comes from chemical physics (J. W. Cahn was a metallurgist; J. E. Hilliard a chemical engineer). The work deliberately restricts its claims to what the 2D model demonstrates and marks every untested part of the hypothesis explicitly; its aim is to open a discussion, not to announce a finished theory.
 
-| Модель | Тип взаимодействия | Физический смысл |
+We compare **two interaction models**:
+
+| Model | Interaction | Physical meaning |
 |---|---|---|
-| **4-связность** | только 4 ближайших соседа | жёсткая решётка, «мёртвый камень» |
-| **Потенциал Юкавы** | `J(r) = J0·e^(−μr)/r`, радиус `r_cutoff = 4` | мягкое затухающее поле, «живая полимерная среда» |
+| **4-connectivity** | only the 4 nearest neighbours | hard lattice, "dead stone" |
+| **Yukawa potential** | J(r) = J0·e^(−μr)/r, cutoff r_cutoff = 4 | soft screened field, "living polymer medium" |
 
-## Научная цель и проблема
+## Scientific goal and problem
 
-Современные N-body симуляции (Millennium, FLAMINGO) и феноменологические модели (Yadav, 2026 — уравнение Кана–Хилларда) успешно воспроизводят распределение галактик, однако N-body вычислительно дороги, а макроскопические модели **не объясняют микроскопическую природу** фазового перехода. Мы предлагаем альтернативный путь: смоделировать агрегацию плексонов на дискретной решётке.
+Modern N-body simulations (Millennium, FLAMINGO) and phenomenological models (Yadav, 2026 — the Cahn–Hilliard equation) successfully reproduce the distribution of galaxies, yet N-body methods are computationally expensive and macroscopic models do **not explain the microscopic nature** of the phase transition. We propose an alternative route: simulating the aggregation of plexons on a discrete lattice.
 
-**Гипотеза:** пространство-время состоит из сети узлов (плексонов); масса и гравитация возникают как результат их агрегации.
+**Hypothesis:** spacetime is a network of nodes (plexons); mass and gravity arise from their aggregation.
 
-**Цель:** показать, что модель с затухающим потенциалом Юкавы воспроизводит два классических механизма полимерной физики — **бинодальный распад** (образование изолированных капель) и **спинодальный распад** (образование сплошной сетки/геля), и что для этого необходим именно *мягкий* потенциал, а не *жёсткая* 4-связность.
+**Goal:** to show that a model with a screened Yukawa potential reproduces two classical mechanisms of polymer physics — **binodal decomposition** (formation of isolated droplets) and **spinodal decomposition** (formation of a contiguous network/gel) — and that this requires a *soft* potential rather than a *hard* 4-connectivity.
 
-## Методология в два этапа
+## Methodology (two stages)
 
-1. **Скрининг (первичный прогон).** Полная матрица параметров: 4 силы притяжения (J0/λ = 0; 0.5; 1; 3) × 4 плотности (0.5%, 1%, 10%, 50%) × 13 значений поверхностного натяжения σ = **208 комбинаций**, каждая по 20 000 шагов Метрополиса (20 000 × 5 = 100 000 итераций). Цель — найти «вкусные» точки фазового перехода по кривой периметра («пила»).
-2. **Глубокий расчёт (deep dive).** По результатам скрининга выбраны **4 точки**; для них проведён длительный расчёт: **4-связность — 2.5 млн шагов**, **Юкава — 5 млн шагов** (для наблюдения эволюции и созревания Оствальда).
+1. **Screening (initial run).** Full parameter matrix: 4 couplings (J0/λ = 0; 0.5; 1; 3) × 4 densities (0.5%, 1%, 10%, 50%) × 13 surface-tension values σ = **208 combinations**, each for 20,000 Metropolis steps (20,000 × 5 = 100,000 moves). The goal is to locate the "interesting" points of the phase transition on the perimeter curve ("sawtooth").
+2. **Deep dive.** Four points were selected and run long: **4-connectivity — 2.5 million steps**, **Yukawa — 5 million steps**, to observe evolution and Ostwald ripening.
 
-**Четыре выбранные точки** (λ = J0 = 3.0 — режим сильного притяжения, доминирующего над тепловым шумом β = 1.0):
+**The four selected points** (λ = J0 = 3.0 — the regime of strong attraction dominating the thermal noise β = 1.0):
 
-| # | Плотность | 4-связность | Юкава | Режим |
+| # | Density | 4-connectivity | Yukawa | Regime |
 |---|---|---|---|---|
-| 1 | 10 % | σ = 2.0 (минимум периметра) | σ = 2.0 | бинодаль (капли) |
-| 2 | 10 % | σ = 2.5 (скачок периметра) | σ = 10.0 | бинодаль, сильное натяжение |
-| 3 | 50 % | σ = 1.5 (начало геля) | σ = 1.5 | спинодаль (гель) |
-| 4 | 50 % | σ = 2.0 (стабильный гель) | σ = 2.0 | спинодаль, стабильный гель |
+| 1 | 10 % | σ = 2.0 (perimeter minimum) | σ = 2.0 | binodal (droplets) |
+| 2 | 10 % | σ = 2.5 (perimeter jump) | σ = 10.0 | binodal, strong tension |
+| 3 | 50 % | σ = 1.5 (gel onset) | σ = 1.5 | spinodal (gel) |
+| 4 | 50 % | σ = 2.0 (stable gel) | σ = 2.0 | spinodal, stable gel |
 
-## Ключевые результаты (финальные данные)
+## Key results (final data)
 
-Сводка по глубокому расчёту (значения на 250k → финальный шаг):
+Summary of the deep dive (values at 250k → final step):
 
-| Модель | Точка | P_inf (250k → финал) | Периметр (250k → финал) | Max_Size |
+| Model | Point | P_inf (250k → final) | Perimeter (250k → final) | Max_Size |
 |---|---|---|---|---|
-| 4-связность 2.5M | 10 %, σ=2.0 | 0.967 → **1.0** | 432 → 152 | 996 → 1030 |
-| 4-связность 2.5M | 10 %, σ=2.5 | 0.982 → **1.0** | 402 → 152 | 976 → 994 |
-| 4-связность 2.5M | 50 %, σ=1.5 | **1.0** (сразу) | 2214 → 1042 | 4934 |
-| 4-связность 2.5M | 50 %, σ=2.0 | **1.0** (сразу) | 2140 → 1004 | 5024 |
-| **Юкава 5M** | 10 %, σ=2.0 | 0.299 → **0.483** | 574 → 218 | 292 → 472 |
-| **Юкава 5M** | 10 %, σ=10.0 | 0.392 → **0.637** | 562 → 236 | 403 → 655 |
-| **Юкава 5M** | 50 %, σ=1.5 | 0.688 → **0.799** | 1312 → 588 | 3376 → 3922 |
-| **Юкава 5M** | 50 %, σ=2.0 | 0.688 → **0.720** | 1370 → 588 | 3482 → 3644 |
+| 4-connectivity 2.5M | 10 %, σ=2.0 | 0.967 → **1.0** | 432 → 152 | 996 → 1030 |
+| 4-connectivity 2.5M | 10 %, σ=2.5 | 0.982 → **1.0** | 402 → 152 | 976 → 994 |
+| 4-connectivity 2.5M | 50 %, σ=1.5 | **1.0** (at once) | 2214 → 1042 | 4934 |
+| 4-connectivity 2.5M | 50 %, σ=2.0 | **1.0** (at once) | 2140 → 1004 | 5024 |
+| **Yukawa 5M** | 10 %, σ=2.0 | 0.299 → **0.483** | 574 → 218 | 292 → 472 |
+| **Yukawa 5M** | 10 %, σ=10.0 | 0.392 → **0.637** | 562 → 236 | 403 → 655 |
+| **Yukawa 5M** | 50 %, σ=1.5 | 0.688 → **0.799** | 1312 → 588 | 3376 → 3922 |
+| **Yukawa 5M** | 50 %, σ=2.0 | 0.688 → **0.720** | 1370 → 588 | 3482 → 3644 |
 
-**Выводы:**
+**Conclusions:**
 
-- **4-связность** быстро образует единственный перколирующий кластер (P_inf → 1.0 уже к 500 000 шагам) и далее лишь медленно сглаживает границу (периметр падает), **не меняя топологию** — система «замерзает» в монолит с угловатыми (кубическими) артефактами. Для описания динамической эволюции структур она непригодна.
-- **Юкава** демонстрирует классическую полимерную термодинамику: при **10 %** — **бинодальный распад** (изолированные гладкие капли, прототип галактик), при **50 %** — **спинодальный распад** (биконтинуальная сетка, прототип космической паутины). Система продолжает перестраиваться (**созревание Оствальда**: крупные капли/сетка поглощают мелкие) вплоть до 5 млн шагов.
+- **4-connectivity** rapidly forms a single percolating cluster (P_inf → 1.0 already by 500,000 steps) and thereafter only slowly smooths its boundary (perimeter falls), **without ever re-topologising** — the system "freezes" into a monolith with angular (lattice) artifacts. It is unsuitable for describing dynamic structure evolution.
+- **Yukawa** exhibits classical polymer thermodynamics: at **10 %** — **binodal decomposition** (isolated smooth droplets, a prototype of galaxies); at **50 %** — **spinodal decomposition** (a bicontinuous network, a prototype of the cosmic web). The system keeps rearranging (**Ostwald ripening**: large droplets/network absorb small ones) up to 5 million steps.
 
-> **Созревание Оствальда (кратко).** Процесс поглощения крупными каплями/кластерами более мелких образований после разделения фаз: у мелкой капли выше поверхностное натяжение (давление Лапласа ∝ 1/r), поэтому вещество стремится перетечь и объединиться с более крупными агрегатами. В данных мы это видим как непрерывный рост P_inf (0.299→0.483), рост Max_Size (292→472) и падение периметра (574→218). Это и есть «живая эволюция» структуры. Подробно — [THEORY.ru.md](THEORY.ru.md) §6.1.
+> **Ostwald ripening (briefly).** The process of large droplets/clusters absorbing smaller formations after phase separation: a small droplet has higher surface tension (Laplace pressure ∝ 1/r), so matter tends to flow over and merge with the larger aggregates. In the data we see this as a continuous rise in P_inf (0.299→0.483), a rise in Max_Size (292→472), and a fall in perimeter (574→218) — the "living evolution" of the structure. Details: THEORY §6.1.
 
-> **Важная оговорка о статистике.** Каждая точка рассчитана нами **один раз (один прогон)**; оценка дисперсии результатов по случайным seed нами не проведена. Учёт статистики (несколько seed с усреднением) — запланированное улучшение (см. THEORY §12) как кода Python, так и последующей стадии проверки гипотезы.
+> **Caveat about statistics.** Each point was run by us **once (a single run)**; the variance across random seeds has not been estimated by us. Statistics (several seeds with averaging) is a planned improvement (see THEORY §12) — of both the Python code and the next stage of testing the hypothesis.
 
-> **Важная оговорка о «плато».** Полное термодинамическое равновесие на 5 млн шагах **не зафиксировано**: у точек (10 %, σ=10.0) и (50 %, σ=2.0) P_inf выходит на насыщение (~0.64 и ~0.72 соответственно), тогда как (10 %, σ=2.0) и (50 %, σ=1.5) продолжают медленно расти до конца расчёта. Рост носит характер быстрого начального подъёма с медленным выходом на плато (экспоненциальное приближение); для подтверждения насыщения требуются более длинные прогоны (порядка 10–15 млн шагов).
+> **Caveat about the "plateau".** Full thermodynamic equilibrium was not reached at 5 million steps: points (10 %, σ=10.0) and (50 %, σ=2.0) saturate (~0.64 and ~0.72), whereas (10 %, σ=2.0) and (50 %, σ=1.5) still grow slowly until the end. The growth resembles a fast initial rise with a slow approach to a plateau (exponential relaxation); confirming saturation requires longer runs (of order 10–15 million steps).
 
-![4-связность, 10%, σ=2.0, шаг 250k](figures/4conn_2.5M/4conn_D0.1_S2.0_step250000.png)
+![4-connectivity, 10%, σ=2.0, step 250k](figures/4conn_2.5M/4conn_D0.1_S2.0_step250000.png)
+*4-connectivity (10 %, σ=2.0), 250,000 steps — a ragged angular cluster.*
 
-**Рис.1.** *4-связность (10 %, σ=2.0), 250 000 шагов — рваный угловатый кластер.*
+![Yukawa, 10%, σ=2.0, step 4.75M](figures/yukawa_5M/yukawa_D0.1_S2.0_step4750000.png)
+*Yukawa (10 %, σ=2.0), 4,750,000 steps — a smooth isolated droplet.*
 
-![Юкава, 10%, σ=2.0, шаг 4.75M](figures/yukawa_5M/yukawa_D0.1_S2.0_step4750000.png)
+## Animations (GIF)
 
-**Рис.2** *Юкава (10 %, σ=2.0), 4 750 000 шагов — гладкая изолированная капля.*
+Embedded full-evolution animations (they play inline on GitHub):
 
-## Структура репозитория
+![4-connectivity, 10 %, σ=2.0 — 250k → 2.25M steps](gif/4conn_D0.1_S2.0.gif)
+
+![Yukawa, 10 %, σ=2.0, 5M — 250k → 4.75M steps](gif/yukawa_5M_D0.1_S2.0.gif)
+
+![Yukawa, 50 %, σ=1.5, 5M — spinodal network](gif/yukawa_5M_D0.5_S1.5.gif)
+
+All 12 animations — in the [`gif/`](gif/) folder: 4×4-connectivity (2.5M), 4×Yukawa (2.5M), 4×Yukawa (5M).
+
+## Repository structure
 
 ```text
-plekton/
-├── README.md                    # основной README (английский)
-├── README.ru.md                 # этот файл (русская версия)
-├── THEORY.md                    # подробная теория (английский)
-├── THEORY.ru.md                 # подробная теория (русская версия)
-├── LICENSE                      # MIT (код)
-├── LICENSE-text                 # CC BY 4.0 (тексты/документация)
-├── CITATION.cff                 # машиночитаемое цитирование
-├── requirements.txt             # зависимости (pip)
-├── environment.yml              # окружение conda/miniforge
+├── README.md                    # main README (English, this file)
+├── README.ru.md                 # README in Russian
+├── THEORY.md                    # detailed theory (English)
+├── THEORY.ru.md                 # detailed theory (Russian)
+├── LICENSE                      # MIT (code)
+├── LICENSE-text                 # CC BY 4.0 (text/documentation)
+├── CITATION.cff                 # machine-readable citation
+├── requirements.txt             # pip dependencies
+├── environment.yml              # conda/miniforge environment
 ├── data/
-│   ├── screening/               # файлы первичного скрининга (см. README внутри)
-│   ├── 4conn_2.5M.csv           # глубокий расчёт 4-связности (2.5 млн шагов)
-│   ├── yukawa_2.5M.csv          # глубокий расчёт Юкавы (2.5 млн шагов)
-│   ├── yukawa_5M.csv            # финальный расчёт Юкавы (5 млн шагов)
-│   └── summary_2.5M.xlsx        # сводка 2.5 млн (обе модели)
+│   ├── screening/               # primary screening files (see README inside)
+│   ├── 4conn_2.5M.csv           # 4-connectivity deep dive (2.5M steps)
+│   ├── yukawa_2.5M.csv          # Yukawa deep dive (2.5M steps)
+│   ├── yukawa_5M.csv            # final Yukawa run (5M steps)
+│   └── summary_2.5M.xlsx        # 2.5M summary (both models)
 ├── src/
-│   ├── simulation_4conn_2.5M.ipynb  # код расчёта 4-связности (2.5 млн шагов)
-│   ├── simulation_yukawa_2.5M.ipynb # код расчёта Юкавы (2.5 млн шагов)
-│   └── simulation_yukawa_5M.ipynb   # код расчёта Юкавы (5 млн шагов)
-├── experiments/                # GPU-варианты (PyTorch/CuPy) — без ускорения, см. README внутри
+│   ├── simulation_4conn_2.5M.ipynb
+│   ├── simulation_yukawa_2.5M.ipynb
+│   └── simulation_yukawa_5M.ipynb
+├── experiments/                # GPU variants (PyTorch/CuPy) — no speedup, see README inside
 │   ├── simulation_4conn_CUDA.ipynb
 │   └── simulation_yukawa_GPU.ipynb
 ├── figures/
-│   ├── 4conn_2.5M/              # кадры эволюции 4-связности (250k…2.25M)
-│   ├── yukawa_2.5M/             # кадры эволюции Юкавы (250k…2.25M)
-│   └── yukawa_5M/               # кадры эволюции Юкавы (250k…4.75M)
-└── gif/                         # анимации эволюции (12 шт.)
-    ├── 4conn_D0.1_S2.0.gif  …   # 4-связность, 4 анимации
-    ├── yukawa_2.5M_*.gif        # Юкава 2.5M, 4 анимации
-    └── yukawa_5M_*.gif          # Юкава 5M, 4 анимации
+│   ├── 4conn_2.5M/              # evolution frames (250k…2.25M)
+│   ├── yukawa_2.5M/             # evolution frames (250k…2.25M)
+│   └── yukawa_5M/               # evolution frames (250k…4.75M)
+└── gif/                         # 12 evolution animations
 ```
 
-## Анимации (GIF)
+## Data files and code
 
-Ниже — встроенные анимации полной эволюции:
+**Data:**
+- `data/4conn_2.5M.csv` — 4-connectivity deep dive, 2.5M steps (columns: `p_init, lam, sigma, step, density, P_inf, perimeter, max_size`).
+- `data/yukawa_2.5M.csv` — Yukawa deep dive, 2.5M steps (columns: `p_init, J0, sigma, step, density, P_inf, perimeter, max_size`).
+- `data/yukawa_5M.csv` — final Yukawa run, 5M steps.
+- `data/summary_2.5M.xlsx` — 2.5M summary (sheets `deep_dive_4conn_v2`, `deep_dive_yukawa_v2`).
+- `data/screening/` — primary screening files for the 208 points (20,000 steps); contents and the parameter matrix — in [data/screening/README.md](data/screening/README.md).
 
-![4-связность, 10 %, σ=2.0 — 250k → 2.25M шагов](gif/4conn_D0.1_S2.0.gif)
+**Code:**
+- `src/simulation_4conn_2.5M.ipynb` — 4-connectivity (L=100, λ=3.0, 2.5M steps).
+- `src/simulation_yukawa_2.5M.ipynb` — Yukawa 2.5M (L=100, J0=3.0, μ=0.5, r_cutoff=4).
+- `src/simulation_yukawa_5M.ipynb` — Yukawa 5M (final).
 
-![Юкава, 10 %, σ=2.0, 5M — 250k → 4.75M шагов](gif/yukawa_5M_D0.1_S2.0.gif)
+## Installation and run
 
-![Юкава, 50 %, σ=1.5, 5M — спинодальная сетка](gif/yukawa_5M_D0.5_S1.5.gif)
-
-Полный набор из 12 анимаций — в каталоге [`gif/`](gif/): 4×4-связность (2.5M), 4×Юкава (2.5M), 4×Юкава (5M).
-
-## Файлы данных и код
-
-**Данные:**
-- `data/4conn_2.5M.csv` — глубокий расчёт 4-связности, 2.5 млн шагов (колонки: `p_init, lam, sigma, step, density, P_inf, perimeter, max_size`).
-- `data/yukawa_2.5M.csv` — глубокий расчёт Юкавы, 2.5 млн шагов (колонки: `p_init, J0, sigma, step, density, P_inf, perimeter, max_size`).
-- `data/yukawa_5M.csv` — финальный расчёт Юкавы, 5 млн шагов.
-- `data/summary_2.5M.xlsx` — сводка 2.5 млн (листы `deep_dive_4conn_v2`, `deep_dive_yukawa_v2`).
-- `data/screening/` — файлы первичного скрининга 208 точек (20 000 шагов); состав и матрица параметров — в [data/screening/README.md](data/screening/README.md).
-
-**Код:**
-- `src/simulation_4conn_2.5M.ipynb` — 4-связность (L=100, λ=3.0, 2.5 млн шагов).
-- `src/simulation_yukawa_2.5M.ipynb` — Юкава 2.5 млн (L=100, J0=3.0, μ=0.5, r_cutoff=4).
-- `src/simulation_yukawa_5M.ipynb` — Юкава 5 млн (финальный).
-
-## Установка и запуск
-
-**Рекомендуемый путь (conda/miniforge, без pip):**
+**Recommended (conda/miniforge, without pip):**
 ```bash
 conda env create -f environment.yml
-conda activate gravitation   # имя окружения из environment.yml
+conda activate gravitation   # environment name from environment.yml
 ```
 
-**Альтернатива (pip):**
+**Alternative (pip):**
 ```bash
-git clone <URL-репозитория>   # вставьте URL после публикации репозитория
-cd plekton
+git clone <repo-URL>   # insert the URL after publication
+cd <repo>
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Запуск скриптов (.ipynb) — в Jupyter: `jupyter notebook src/simulation_yukawa_5M.ipynb`. Параметры (L=100, J0=3.0, μ=0.5, r_cutoff=4, β=1.0, точки) заданы в начале каждого скрипта.
+Run the scripts (.ipynb) in Jupyter: `jupyter notebook src/simulation_yukawa_5M.ipynb`. The parameters (L=100, J0=3.0, μ=0.5, r_cutoff=4, β=1.0, the points) are set at the top of each script.
 
-## Литература
+## References
 
-1. N. Yadav, *A spinodal decomposition model for the large-scale structure of the universe*, **Current Physics** 3, e27723348461389 (2026). DOI: [10.2174/0127723348461389260423123250](https://doi.org/10.2174/0127723348461389260423123250).
-2. J. W. Cahn, J. E. Hilliard, *Free energy of a nonuniform system. I. Interfacial free energy*, **J. Chem. Phys.** 28, 258 (1958). DOI: [10.1063/1.1744102](https://doi.org/10.1063/1.1744102).
-3. V. Springel et al., *Simulations of the formation, evolution and clustering of galaxies and quasars*, **Nature** 435, 629 (2005). DOI: [10.1038/nature03597](https://doi.org/10.1038/nature03597).
-4. J. Schaye et al., *The FLAMINGO project: cosmological hydrodynamical simulations for large-scale structure and galaxy cluster surveys*, **MNRAS** 526, 4978 (2023). DOI: [10.1093/mnras/stad2419](https://doi.org/10.1093/mnras/stad2419).
+1. N. Yadav, *A spinodal decomposition model for the large-scale structure of the universe*, Current Physics **3**, e27723348461389 (2026). DOI: [10.2174/0127723348461389260423123250](https://doi.org/10.2174/0127723348461389260423123250).
+2. J. W. Cahn, J. E. Hilliard, *Free energy of a nonuniform system. I. Interfacial free energy*, J. Chem. Phys. **28**, 258 (1958). DOI: [10.1063/1.1744102](https://doi.org/10.1063/1.1744102).
+3. V. Springel et al., *Simulations of the formation, evolution and clustering of galaxies and quasars*, Nature **435**, 629 (2005). DOI: [10.1038/nature03597](https://doi.org/10.1038/nature03597).
+4. J. Schaye et al., *The FLAMINGO project: cosmological hydrodynamical simulations for large-scale structure and galaxy cluster surveys*, MNRAS **526**, 4978 (2023). DOI: [10.1093/mnras/stad2419](https://doi.org/10.1093/mnras/stad2419).
 
-## Лицензия и цитирование
+## License and citation
 
-- **Код** — лицензия **MIT** (файл `LICENSE`).
-- **Тексты и документация** (README, THEORY) — лицензия **CC BY 4.0** (файл `LICENSE-text`).
-- **DOI Zenodo он будет добавлен сюда и в `CITATION.cff`.**
+- **Code** — MIT license (file `LICENSE`).
+- **Text and documentation** (README, THEORY) — CC BY 4.0 (file `LICENSE-text`).
+- **Zenodo DOI is obtained it will be added here and to `CITATION.cff`.**
 
 ---
 
-*Подробная теория, вывод формул, словарь обозначений и полный разбор результатов — в [THEORY.ru.md](THEORY.ru.md).*
+*Detailed theory, notation glossary, methodology, and the full analysis — in [THEORY.md](THEORY.md) (English) / [THEORY.ru.md](THEORY.ru.md) (Russian).*.
 
-## Тестирование и обкатка (Testing & QA)
+## Testing & QA
 
-Разработка велась с использованием ИИ-инструментов для написания кода (AI-assisted coding); вся научная часть — гипотеза, физическая модель, выбор параметров и методологии, интерпретация и проверка результатов — авторская. В ходе обкатки код проверялся на устойчивость к сбоям и обрывам (система чекпоинтов с восстановлением); исправлены ошибка периметра («шахматная доска»), двойной счёт энергии Юкавы и off-by-one при сохранении финального кадра; результаты сверены с первичным скринингом. На текущий момент расчёты стабильны и воспроизводимы (данные — в `data/`).
+Development used AI-assisted coding tools; the scientific content — the hypothesis, the physical model, the choice of parameters and methodology, and the interpretation and verification of the results — is the author's. During shakedown the code was tested for robustness against crashes and interruptions (a checkpoint/resume system); the perimeter bug ("checkerboard"), the Yukawa double-counting, and an off-by-one in saving the final snapshot were fixed; the results were cross-checked against the primary screening. The computations are currently stable and reproducible (data in `data/`).
