@@ -331,6 +331,8 @@ A single plexon has "weight" 1; an aggregate of N plexons has weight N. **Mass i
 
 Gravity is **not a fundamental force but the elasticity of the network**. A dense aggregate locally strains the network; the network relieves the strain by pulling neighbouring nodes toward the aggregate. The more nodes are gathered into a clump, the harder it pulls its neighbours — roughly, this yields the proportionality of attraction to mass. Two bodies experience equal and opposite tension; the lighter one (less inertia) accelerates more — reproducing the falling asymmetry of §11.1 without action at a distance.
 
+**A practical horizon (the original motivation of the work).** If gravity is the tension of the network, then producing it does not require planetary masses: it suffices to **locally change the state of the network** — the aggregation density N, the tension σ, or the bond strength. This opens a theoretical possibility of controlling gravity without enormous masses. This point is a motivation, not a claim: it needs a separate check (which local change of the network changes the attraction, and by how much — see the further-work plan).
+
 ### 11.5. Sign-alternation: a unified origin of dark matter and dark energy
 
 A plexon carries a **sign q = ±1** that flips upon aggregation: a single plexon is "+", an aggregate is "−". The interaction:
@@ -357,6 +359,8 @@ The effective range grows with N (a black hole "feels" everything; a single plex
 ### 11.7. The bubble wall and percolation
 
 The observable Universe lies in the **thickness of the wall of an expanding "bubble"** (not on a surface, not in a void). Redshift is a visibility limit set by the density of the wall, not the edge of the Universe. The early homogeneous wall, saturated with plexons, underwent fluctuations: where the density grew, aggregation began; where it fell, voids opened; at some moment a **percolation transition** occurred — the homogeneous "film" separated into clusters and voids. (In the refined formulation: the bubble "did not burst" but underwent a **phase transition** — segregation, like oil and water, without tearing the metric.) *An honest citation: the very idea of "living inside a domain wall" is not new — it was proposed by V. A. Rubakov and M. E. Shaposhnikov (1983) [5]. What is specific to this work is the percolation phase transition in the thickness of the wall and the derivation of the morphology from discrete aggregation of plexons.*
+
+**Cosmic history as motion along the phase diagram.** The two regimes obtained in the numerical part — a connected bicontinuous network at 50% and isolated droplets at 10% — define a density phase diagram, from which a picture of cosmic history follows directly: the early Universe (high density) is one connected network; expansion lowers the density, and upon crossing the threshold the network breaks up into droplets (protogalaxies). The very idea of "a connected medium first, fragmentation later" is known — it is Zel'dovich's pancake scenario [6], and the connectivity of the large-scale structure as a function of density has long been studied with percolation methods [7] (up to modern analyses of the MillenniumTNG simulations). What is specific here is the concrete lattice implementation in which both regimes are obtained numerically and the threshold lies between 10% and 50%. Remarkably, the real density Ωm = 0.317 falls inside this interval: in model units the present-day Universe sits near the transition threshold — a key testable consequence (run the 0.317 point and locate the threshold density by bisection — see the further-work plan).
 
 ### 11.8. Formalisation: CDT and the action
 
@@ -395,3 +399,5 @@ The aggregation term −λ Σ N² (the minus: aggregation is favourable) is the 
 3. V. Springel et al., *Simulations of the formation, evolution and clustering of galaxies and quasars*, Nature **435**, 629 (2005). DOI: [10.1038/nature03597](https://doi.org/10.1038/nature03597).
 4. J. Schaye et al., *The FLAMINGO project: cosmological hydrodynamical simulations…*, MNRAS **526**, 4978 (2023). DOI: [10.1093/mnras/stad2419](https://doi.org/10.1093/mnras/stad2419).
 5. V. A. Rubakov, M. E. Shaposhnikov, *Do we live inside a domain wall?*, Phys. Lett. B **125**, 136 (1983). DOI: [10.1016/0370-2693(83)91253-4](https://doi.org/10.1016/0370-2693(83)91253-4).
+6. Ya. B. Zel'dovich, *Fragmentation of a homogeneous medium under the action of gravitation*, Astrophysics **6**, 319 (1970).
+7. S. F. Shandarin, Ya. B. Zeldovich, *The large-scale structure of the universe: Turbulence, intermittency, structures in a self-gravitating medium*, Rev. Mod. Phys. **61**, 185 (1989). DOI: [10.1103/RevModPhys.61.185](https://doi.org/10.1103/RevModPhys.61.185).
