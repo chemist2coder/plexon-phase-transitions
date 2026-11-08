@@ -4,6 +4,8 @@
 
 Author: Victor Boyko · GitHub: [@chemist2coder](https://github.com/chemist2coder) · jade.cups@gmail.com
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24058535.svg)](https://doi.org/10.5281/zenodo.24058535)
+
 *Русская версия — [README.ru.md](README.ru.md).*
 
 ---

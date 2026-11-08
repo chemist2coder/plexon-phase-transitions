@@ -5,12 +5,14 @@ type: software
 authors:
   - family-names: Boyko
     given-names: Victor
+    affiliation: "Independent Researcher"
     # orcid: https://orcid.org/XXXX-XXXX-XXXX-XXXX   # добавьте ORCID при наличии
 version: 1.0.0
-date-released: "2026-11-06"
-repository-code: "https://github.com/chemist2coder/plekton-network-simulation"
-url: "https://github.com/chemist2coder/plekton-network-simulation"
+date-released: "2026-11-08"
+repository-code: "https://github.com/chemist2coder/plexon-phase-transitions"
+url: "https://github.com/chemist2coder/plexon-phase-transitions"
 license: MIT
+doi: 10.5281/zenodo.24058535
 keywords:
   - plexon
   - spinodal decomposition
