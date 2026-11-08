@@ -4,7 +4,7 @@
 
 Author: Victor Boyko · GitHub: [@chemist2coder](https://github.com/chemist2coder) · jade.cups@gmail.com
 
-*Русская версия: [README.ru](README.md) (основной репозиторий на русском; этот файл — английский перевод).*
+*Русская версия — [README.ru.md](README.ru.md).*
 
 ---
 
@@ -92,11 +92,10 @@ All 12 animations — in the [`gif/`](gif/) folder: 4×4-connectivity (2.5M), 4�
 ## Repository structure
 
 ```text
-├── README.md                    # main README (Russian)
-├── README_eng.md                # this file (English)
-├── THEORY.md                    # detailed theory (Russian)
-├── THEORY_eng.md                # detailed theory (English)
-├── RENAME_MAP.md                # file-rename table "old → new"
+├── README.md                    # main README (English, this file)
+├── README.ru.md                 # README in Russian
+├── THEORY.md                    # detailed theory (English)
+├── THEORY.ru.md                 # detailed theory (Russian)
 ├── LICENSE                      # MIT (code)
 ├── LICENSE-text                 # CC BY 4.0 (text/documentation)
 ├── CITATION.cff                 # machine-readable citation
@@ -136,8 +135,6 @@ All 12 animations — in the [`gif/`](gif/) folder: 4×4-connectivity (2.5M), 4�
 - `src/simulation_yukawa_2.5M.ipynb` — Yukawa 2.5M (L=100, J0=3.0, μ=0.5, r_cutoff=4).
 - `src/simulation_yukawa_5M.ipynb` — Yukawa 5M (final).
 
-Correspondence to the original file names — in `RENAME_MAP.md`.
-
 ## Installation and run
 
 **Recommended (conda/miniforge, without pip):**
@@ -171,7 +168,7 @@ Run the scripts (.ipynb) in Jupyter: `jupyter notebook src/simulation_yukawa_5M.
 
 ---
 
-*Detailed theory, notation glossary, methodology, and the full analysis — in [THEORY_eng.md](THEORY_eng.md) (English) / [THEORY.md](THEORY.md) (Russian). The arXiv preprint — in `arXiv/preprint.md` (English) and `arXiv/preprint_ru.md` (Russian).*
+*Detailed theory, notation glossary, methodology, and the full analysis — in [THEORY.md](THEORY.md) (English) / [THEORY.ru.md](THEORY.ru.md) (Russian). The arXiv preprint — in `arXiv/preprint.md` (English)*.
 
 ## Testing & QA
 
