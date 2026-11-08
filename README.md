@@ -3,9 +3,10 @@
 **Plexon Network Model of Phase Transitions and Large-Scale Structure of the Universe**
 
 *2D Monte Carlo study of aggregation: Yukawa vs 4-connectivity*
-*Русская версия. Основной README — на английском: [README.md](README.md).*
 
 Автор: Victor Boyko · GitHub: [@chemist2coder](https://github.com/chemist2coder) · jade.cups@gmail.com
+
+*Русская версия. Основной README — на английском: [README.md](README.md).*
 
 ## О проекте
 
