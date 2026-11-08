@@ -164,11 +164,11 @@ Run the scripts (.ipynb) in Jupyter: `jupyter notebook src/simulation_yukawa_5M.
 
 - **Code** — MIT license (file `LICENSE`).
 - **Text and documentation** (README, THEORY) — CC BY 4.0 (file `LICENSE-text`).
-- How to cite — file `CITATION.cff`. After the Zenodo DOI is obtained it will be added here and to `CITATION.cff`.
+- **Zenodo DOI is obtained it will be added here and to `CITATION.cff`.**
 
 ---
 
-*Detailed theory, notation glossary, methodology, and the full analysis — in [THEORY.md](THEORY.md) (English) / [THEORY.ru.md](THEORY.ru.md) (Russian). The arXiv preprint — in `arXiv/preprint.md` (English)*.
+*Detailed theory, notation glossary, methodology, and the full analysis — in [THEORY.md](THEORY.md) (English) / [THEORY.ru.md](THEORY.ru.md) (Russian).*.
 
 ## Testing & QA
 
