@@ -172,7 +172,7 @@ pip install -r requirements.txt
 
 - **Код** — лицензия **MIT** (файл `LICENSE`).
 - **Тексты и документация** (README, THEORY) — лицензия **CC BY 4.0** (файл `LICENSE-text`).
-- **DOI Zenodo он будет добавлен сюда и в `CITATION.cff`.**
+- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24058535.svg)](https://doi.org/10.5281/zenodo.24058535)
 
 ---
 
