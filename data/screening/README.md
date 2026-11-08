@@ -1,4 +1,17 @@
-# data/screening — Файлы первичного скрининга (20 000 шагов)
+# data/screening — primary screening files (20,000 steps)
+
+The raw screening files (208 combinations):
+
+- `Summary.xlsx` — sheets `4conn_results`, `data_D0.005_J3.0`, `data_D0.01_J3.0`, `data_D0.1_J3.0`, `data_D0.5_J3.0`, `Параметры` (Yukawa data, J0=3.0, by density).
+- `4conn_results.xlsx` — 4-connectivity results (208 rows: p_init × lam × sigma).
+
+The 4 "tasty" points for the deep dive were selected from exactly these data (see THEORY §7–§8).
+
+---
+
+## Русская версия
+
+# data/screening — файлы первичного скрининга (20 000 шагов)
 
 Исходные файлы скрининга (208 комбинаций):
 
